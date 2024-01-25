@@ -1,0 +1,28 @@
+package com.example.sellerapp.data.dao
+
+import androidx.room.Dao
+import androidx.room.Delete
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
+import androidx.room.Query
+import androidx.room.Update
+import com.example.sellerapp.data.model.UserData
+
+@Dao
+interface UserDao {
+
+    @Query("SELECT * FROM user_table")
+    fun getAllUsers() : List<UserData>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertUser(data: UserData)
+
+    @Update
+    fun updateUser(data: UserData)
+
+    @Delete
+    fun deleteUser(data: UserData)
+
+    @Query("SELECT * FROM user_table WHERE product_id= :product_id LIMIT 1")
+    fun getUserFromProduct(product_id : Long) :UserData
+}
