@@ -14,20 +14,31 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0" />
+    <ImageView
+        android:layout_width="34dp"
+        android:layout_height="34dp"
+        android:padding="6dp"
+        android:background="?selectableItemBackgroundBorderless"
+        android:src="@drawable/menu"
+        app:layout_constraintHorizontal_bias="0"
+        android:layout_marginStart="16dp"
+        app:layout_constraintBottom_toBottomOf="@id/bar"
+        app:layout_constraintLeft_toLeftOf="@id/bar"
+        app:layout_constraintRight_toRightOf="@id/bar"
+        app:layout_constraintTop_toTopOf="@id/bar"
+        app:tint="@color/white" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:fontFamily="sans-serif-medium"
+        android:fontFamily="@font/nunito_regular"
         android:text="Seller App"
         android:textColor="#FFF"
         android:textSize="22dp"
         app:layout_constraintBottom_toBottomOf="@id/bar"
-        app:layout_constraintHorizontal_bias="0"
-        app:layout_constraintLeft_toRightOf="@id/box_menu"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintLeft_toLeftOf="@id/bar"
+        app:layout_constraintRight_toRightOf="@id/bar"
+        app:layout_constraintTop_toTopOf="@id/bar" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/box_search"
@@ -88,6 +99,7 @@
         app:tabIndicatorAnimationMode="linear"
         app:tabIndicatorColor="#FFF"
         app:tabIndicatorHeight="5dp"
+        app:tabSelectedTextAppearance="@font/nunito_regular"
         app:tabRippleColor="@color/color_app_main"
         app:tabSelectedTextColor="#FFF"
         app:tabTextAppearance="@style/MyTabLayoutStyle"

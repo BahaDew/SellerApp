@@ -25,4 +25,18 @@
         android:name="com.example.sellerapp.presentation.screens.main.MainScreen"
         android:label="MainScreen"
         tools:layout="@layout/screen_main"/>
+    <fragment
+        android:id="@+id/homePage"
+        android:name="com.example.sellerapp.presentation.screens.main.pages.firstPage.HomePage"
+        android:label="HomePage"
+        tools:layout="@layout/page_first">
+        <action
+            android:id="@+id/action_homePage_to_addClientScreen"
+            app:destination="@id/addClientScreen" />
+    </fragment>
+    <fragment
+        android:id="@+id/addClientScreen"
+        tools:layout="@layout/dialog_add_client"
+        android:name="com.example.sellerapp.presentation.screens.addUser.AddClientScreen"
+        android:label="AddClientScreen" />
 </navigation>
