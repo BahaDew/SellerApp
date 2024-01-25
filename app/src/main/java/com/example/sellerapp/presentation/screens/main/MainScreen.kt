@@ -12,7 +12,7 @@ import com.google.android.material.tabs.TabLayoutMediator
 class MainScreen(): MainContract.View , Fragment(R.layout.screen_main) {
     private val binding by viewBinding(ScreenMainBinding::bind)
     private var adapter : MainAdapter? = null
-    private val tabItem = arrayListOf("Home", "Today Pay Users", "Late Users")
+    private val tabItem = arrayListOf("Home", "Today", "Late")
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

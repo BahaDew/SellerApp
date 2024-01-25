@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.sellerapp.R
 import com.example.sellerapp.databinding.ScreenSplashBinding
@@ -17,7 +18,7 @@ class SplashScreen: Fragment(R.layout.screen_splash) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         Handler().postDelayed({
-            replaceScreenWithoutSave(MainScreen())
+            findNavController().navigate(R.id.mainScreen)
         }, 1000)
     }
 }
