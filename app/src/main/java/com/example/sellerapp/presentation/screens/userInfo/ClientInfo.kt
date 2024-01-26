@@ -8,12 +8,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.sellerapp.R
 import com.example.sellerapp.databinding.ScreenInfoBinding
+import com.example.sellerapp.presentation.adapters.ClientInfoAdapter
 import com.example.sellerapp.presentation.adapters.LifeTimeAdapter
 
 class ClientInfo : Fragment(R.layout.screen_info) {
     private val binding by viewBinding(ScreenInfoBinding::bind)
-    private val adapter by lazy(LazyThreadSafetyMode.NONE) { LifeTimeAdapter() }
+    //private val adapter by lazy(LazyThreadSafetyMode.NONE) { LifeTimeAdapter() }
     private var userId : Long = 0
+    private val adapter = ClientInfoAdapter(12)
     val viewModel = ClientInfoViewModel()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +28,14 @@ class ClientInfo : Fragment(R.layout.screen_info) {
         binding.recycler.layoutManager = LinearLayoutManager(requireContext())
 
         val user = viewModel.getUserById(userId)
+        binding.firstname.text = user.firstName
+        binding.lastname.text = user.secondName
+        binding.productName.text = user.productName
+        binding.productPrice.text = user.productPrice
+        binding.productPrice.text = user.productPrice
+        binding.paymentMonth.text = user.advance_payment
+        val remaining = user.productPrice.toInt() - user.advance_payment.toInt()
+        adapter
 
     }
 }

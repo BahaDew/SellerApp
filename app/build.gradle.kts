@@ -61,6 +61,9 @@ dependencies {
     implementation("androidx.room:room-runtime:$room_version")
     annotationProcessor("androidx.room:room-compiler:$room_version")
 
+    // MASKED EDIT TEXT
+    implementation("io.github.vicmikhailau:MaskedEditText:5.0.1")
+
 
 
     kapt("androidx.room:room-compiler:$room_version")
