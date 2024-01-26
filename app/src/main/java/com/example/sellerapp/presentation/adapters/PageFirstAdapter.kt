@@ -55,7 +55,6 @@ class PageFirstAdapter: ListAdapter<UserData, PageFirstAdapter.ClientViewHolder>
     }
 
 
-
     fun setSelectStudentIDListener(block : (UserData) -> Unit) {
         this.selectStudentIDListener = block
     }
