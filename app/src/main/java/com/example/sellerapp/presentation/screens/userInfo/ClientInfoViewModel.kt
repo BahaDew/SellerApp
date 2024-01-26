@@ -12,6 +12,6 @@ class ClientInfoViewModel {
         userLD.value = model.getUserById(id)
     }
     fun getProductById(id : Long) {
-//        productLD.value = model.getProduct(id)
+        productLD.value = model.getProduct(id)
     }
 }

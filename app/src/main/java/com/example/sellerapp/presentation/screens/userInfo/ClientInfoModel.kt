@@ -10,13 +10,13 @@ import com.example.sellerapp.domain.AppRepository
 import com.example.sellerapp.domain.AppRepositoryImpl
 
 class ClientInfoModel {
-    private val repo :AppRepository  = AppRepositoryImpl()
-    fun getUserById(id: Long) : UserData {
+    private val repo: AppRepository = AppRepositoryImpl()
+    fun getUserById(id: Long): UserData {
         return repo.getUserById(id)
     }
 
-    fun getProduct(id : Long) {
-
+    fun getProduct(id: Long): ProductData {
+        return repo.getProductById(id)
     }
 
 }
