@@ -61,7 +61,7 @@
         tools:listitem="@layout/item_time_piece"
         app:layout_constraintVertical_weight="5"/>
     <TextView
-        android:id="@+id/firstname"
+        android:id="@+id/firstname_temp"
         style="@style/MyUserInfoText"
         android:elevation="2dp"
         android:layout_marginTop="16dp"
@@ -70,51 +70,121 @@
         android:text="First Name: " />
 
     <TextView
-        android:id="@+id/lastname"
-        style="@style/MyUserInfoText"
+        android:id="@+id/firstname"
+        style="@style/MyUserInfoTextTwo"
+        android:text="Salom"
         android:elevation="2dp"
-        app:layout_constraintLeft_toLeftOf="@id/container_userinfo"
-        app:layout_constraintTop_toBottomOf="@id/firstname"
-        android:text="Last Name: " />
+        app:layout_constraintTop_toTopOf="@id/firstname_temp"
+        app:layout_constraintBottom_toBottomOf="@id/firstname_temp"
+        app:layout_constraintStart_toEndOf="@id/firstname_temp"
+        />
+
+    <TextView
+        android:id="@+id/lastname"
+        style="@style/MyUserInfoTextTwo"
+        android:text="Salom"
+        android:elevation="2dp"
+        app:layout_constraintTop_toTopOf="@id/lastname_temp"
+        app:layout_constraintBottom_toBottomOf="@id/lastname_temp"
+        app:layout_constraintStart_toEndOf="@id/lastname_temp"
+        />
 
     <TextView
         android:id="@+id/product_name"
-        style="@style/MyUserInfoText"
+        style="@style/MyUserInfoTextTwo"
+        android:text="Salom"
         android:elevation="2dp"
-        app:layout_constraintLeft_toLeftOf="@id/container_userinfo"
-        app:layout_constraintTop_toBottomOf="@id/lastname"
-        android:text="Product: " />
+        app:layout_constraintTop_toTopOf="@id/product_name_temp"
+        app:layout_constraintBottom_toBottomOf="@id/product_name_temp"
+        app:layout_constraintStart_toEndOf="@id/product_name_temp"
+        />
 
     <TextView
         android:id="@+id/product_price"
-        style="@style/MyUserInfoText"
+        style="@style/MyUserInfoTextTwo"
+        android:text="Salom"
         android:elevation="2dp"
-        app:layout_constraintLeft_toLeftOf="@id/container_userinfo"
-        app:layout_constraintTop_toBottomOf="@id/product_name"
-        android:text="Price: " />
+        app:layout_constraintTop_toTopOf="@id/product_price_temp"
+        app:layout_constraintBottom_toBottomOf="@id/product_price_temp"
+        app:layout_constraintStart_toEndOf="@id/product_price_temp"
+        />
 
     <TextView
         android:id="@+id/payment_month"
+        style="@style/MyUserInfoTextTwo"
+        android:text="Salom"
+        android:elevation="2dp"
+        app:layout_constraintTop_toTopOf="@id/payment_month_temp"
+        app:layout_constraintBottom_toBottomOf="@id/payment_month_temp"
+        app:layout_constraintStart_toEndOf="@id/payment_month_temp"
+        />
+
+    <TextView
+        android:id="@+id/pay_One_month"
+        style="@style/MyUserInfoTextTwo"
+        android:text="Salom"
+        android:elevation="2dp"
+        app:layout_constraintTop_toTopOf="@id/pay_month_temp"
+        app:layout_constraintBottom_toBottomOf="@id/pay_month_temp"
+        app:layout_constraintStart_toEndOf="@id/pay_month_temp"
+        />
+
+    <TextView
+        android:id="@+id/paid_months"
+        style="@style/MyUserInfoTextTwo"
+        android:text="Salom"
+        android:elevation="2dp"
+        app:layout_constraintTop_toTopOf="@id/payed_moth_temp"
+        app:layout_constraintBottom_toBottomOf="@id/payed_moth_temp"
+        app:layout_constraintStart_toEndOf="@id/payed_moth_temp"
+        />
+
+    <TextView
+        android:id="@+id/lastname_temp"
         style="@style/MyUserInfoText"
         android:elevation="2dp"
         app:layout_constraintLeft_toLeftOf="@id/container_userinfo"
-        app:layout_constraintTop_toBottomOf="@id/product_price"
+        app:layout_constraintTop_toBottomOf="@id/firstname_temp"
+        android:text="Last Name: " />
+
+    <TextView
+        android:id="@+id/product_name_temp"
+        style="@style/MyUserInfoText"
+        android:elevation="2dp"
+        app:layout_constraintLeft_toLeftOf="@id/container_userinfo"
+        app:layout_constraintTop_toBottomOf="@id/lastname_temp"
+        android:text="Product: " />
+
+    <TextView
+        android:id="@+id/product_price_temp"
+        style="@style/MyUserInfoText"
+        android:elevation="2dp"
+        app:layout_constraintLeft_toLeftOf="@id/container_userinfo"
+        app:layout_constraintTop_toBottomOf="@id/product_name_temp"
+        android:text="Price: " />
+
+    <TextView
+        android:id="@+id/payment_month_temp"
+        style="@style/MyUserInfoText"
+        android:elevation="2dp"
+        app:layout_constraintLeft_toLeftOf="@id/container_userinfo"
+        app:layout_constraintTop_toBottomOf="@id/product_price_temp"
         android:text="Payment Term: " />
 
     <TextView
-        android:id="@+id/pay_month"
+        android:id="@+id/pay_month_temp"
         style="@style/MyUserInfoText"
         android:elevation="2dp"
         app:layout_constraintLeft_toLeftOf="@id/container_userinfo"
-        app:layout_constraintTop_toBottomOf="@id/payment_month"
-        android:text="Per Monnth: " />
+        app:layout_constraintTop_toBottomOf="@id/payment_month_temp"
+        android:text="Per Month: " />
 
     <TextView
-        android:id="@+id/payed_moth"
+        android:id="@+id/payed_moth_temp"
         style="@style/MyUserInfoText"
         android:elevation="2dp"
         app:layout_constraintLeft_toLeftOf="@id/container_userinfo"
-        app:layout_constraintTop_toBottomOf="@id/pay_month"
-        android:text="Paid months: " />
+        app:layout_constraintTop_toBottomOf="@id/pay_month_temp"
+        android:text="Paid Months: " />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

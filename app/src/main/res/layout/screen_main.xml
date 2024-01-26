@@ -91,7 +91,7 @@
         android:id="@+id/tabLayout"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="#009688"
+        android:background="@color/color_app_main"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/bar"
         app:layout_constraintVertical_bias="0"

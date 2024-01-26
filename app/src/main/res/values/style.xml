@@ -11,6 +11,15 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="elevation">4dp</item>
         <item name="android:layout_marginTop">8dp</item>
-        <item name="android:layout_marginStart">8dp</item>
+        <item name="android:layout_marginStart">16dp</item>
+    </style>
+
+    <style name="MyUserInfoTextTwo">
+        <item name="android:textSize">18sp</item>
+        <item name="android:fontFamily">@font/uzum_medium</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="elevation">4dp</item>
+        <item name="android:layout_marginStart">16dp</item>
     </style>
 </resources>
