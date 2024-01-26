@@ -30,23 +30,23 @@ class AddClientScreen() : Fragment(R.layout.dialog_add_client) {
             findNavController().navigateUp()
         }
 
-        binding.btnSave.setOnClickListener{
-            val userData = UserData(
-                id = 0L,
-                binding.firstname.text.toString(),
-                binding.lastname.text.toString(),
-//                binding.number.text.toString(),
-                "",
-                binding.productName.text.toString(),
-                binding.productPrice.text.toString(),
-                binding.advancePayment.text.toString(),
-                binding.paymentMonth.text.toString(),
-                binding.comment.text.toString()
-            )
-            Log.d("ttt", "save bosildi")
-            viewModel.addClient(userData)
-           popBackStack()
-        }
+//        binding.btnSave.setOnClickListener{
+//            val userData = UserData(
+//                id = 0L,
+//                binding.firstname.text.toString(),
+//                binding.lastname.text.toString(),
+////                binding.number.text.toString(),
+//                "",
+//                binding.productName.text.toString(),
+//                binding.productPrice.text.toString(),
+//                binding.advancePayment.text.toString(),
+//                binding.paymentMonth.text.toString(),
+//                binding.comment.text.toString()
+//            )
+//            Log.d("ttt", "save bosildi")
+//            viewModel.addClient(userData)
+//           popBackStack()
+//        }
     }
     fun setOnSaveButtonListener(block:((UserData)-> Unit)) {
         this.saveButtonListener = block
