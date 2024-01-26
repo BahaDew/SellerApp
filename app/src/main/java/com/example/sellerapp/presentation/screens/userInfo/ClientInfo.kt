@@ -9,7 +9,7 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.sellerapp.R
 import com.example.sellerapp.databinding.ScreenInfoBinding
 import com.example.sellerapp.presentation.adapters.ClientInfoAdapter
-import com.example.sellerapp.presentation.adapters.LifeTimeAdapter
+
 
 class ClientInfo : Fragment(R.layout.screen_info) {
     private val binding by viewBinding(ScreenInfoBinding::bind)
@@ -27,15 +27,15 @@ class ClientInfo : Fragment(R.layout.screen_info) {
         binding.recycler.adapter = adapter
         binding.recycler.layoutManager = LinearLayoutManager(requireContext())
 
-        val user = viewModel.getUserById(userId)
-        binding.firstname.text = user.firstName
-        binding.lastname.text = user.secondName
-        binding.productName.text = user.productName
-        binding.productPrice.text = user.productPrice
-        binding.productPrice.text = user.productPrice
-        binding.paymentMonth.text = user.advance_payment
-        val remaining = user.productPrice.toInt() - user.advance_payment.toInt()
-        adapter
+//        val user = viewModel.getUserById(userId)
+//        binding.firstname.text = user.firstName
+//        binding.lastname.text = user.secondName
+//        binding.productName.text = user.productName
+//        binding.productPrice.text = user.productPrice
+//        binding.productPrice.text = user.productPrice
+//        binding.paymentMonth.text = user.advance_payment
+//        val remaining = user.productPrice.toInt() - user.advance_payment.toInt()
+//        adapter
 
     }
 }
