@@ -12,12 +12,17 @@ import com.example.sellerapp.presentation.adapters.LifeTimeAdapter
 
 class ClientInfo : Fragment(R.layout.screen_info) {
     private val binding by viewBinding(ScreenInfoBinding::bind)
-    private val navArgs : ClientInfoArgs by  navArgs()
     private val adapter by lazy(LazyThreadSafetyMode.NONE) { LifeTimeAdapter() }
+    private var userId : Long = 0
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        userId = requireArguments().getLong("userId", 0)
+    }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.recycler.adapter = adapter
         binding.recycler.layoutManager = LinearLayoutManager(requireContext())
-        binding.fullName.text = navArgs.userId.toString()
+        binding.fullName.text = userId.toString()
+
     }
 }

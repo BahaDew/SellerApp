@@ -37,10 +37,8 @@ class PageFirstAdapter: ListAdapter<UserData, PageFirstAdapter.ClientViewHolder>
             binding.root.setOnClickListener {
                 selectedItemListener?.invoke(currentList[absoluteAdapterPosition])
             }
-
             binding.root.setOnLongClickListener {
                 LongSelectListener?.invoke(currentList[absoluteAdapterPosition])
-
                 return@setOnLongClickListener true
             }
         }
