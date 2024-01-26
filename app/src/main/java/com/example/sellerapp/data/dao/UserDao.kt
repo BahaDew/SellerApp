@@ -6,7 +6,6 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
-import com.example.sellerapp.data.model.ProductData
 import com.example.sellerapp.data.model.UserData
 
 @Dao
@@ -29,6 +28,9 @@ interface UserDao {
     @Query("SELECT * FROM user_table WHERE product_id = :id LIMIT 1")
     fun getProductById(id : Long) : UserData
 
-    @Query("SELECT * FROM user_table WHERE product_id = :produc_id AND start_date = :time")
-    fun getLatePayUsers(produc_id:Long, time : Long)
+    @Query("SELECT * FROM user_table WHERE start_date = :currentDate")
+    fun getTodayPayUsers(currentDate: Long) : List<UserData>
+
+    @Query("SELECT * FROM user_table WHERE start_date > :currentDate")
+    fun getLatePayUsers(currentDate: Long): List<UserData>
 }

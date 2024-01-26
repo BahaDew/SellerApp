@@ -15,5 +15,7 @@ interface AppRepository {
     fun updateUser(data: UserData)
     fun deleteUser(data: UserData)
     fun getUserById(id: Long) : UserData
+    fun getPayTodayUsers(long: Long) : List<UserData>
+    fun getPayLateUsers(long: Long) : List<UserData>
 //    fun getUserFromProduct(product_id : Long) : UserData
 }

@@ -66,8 +66,6 @@ class PageFirstAdapter: ListAdapter<UserData, PageFirstAdapter.ClientViewHolder>
     @SuppressLint("SimpleDateFormat")
     fun getDate(milliSeconds: Long, dateFormat: String): String {
         val formatter = SimpleDateFormat(dateFormat)
-
-
         val calendar = Calendar.getInstance().apply {
             timeInMillis = milliSeconds
         }
