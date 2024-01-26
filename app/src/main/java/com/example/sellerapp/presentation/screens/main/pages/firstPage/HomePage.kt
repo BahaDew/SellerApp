@@ -19,6 +19,7 @@ import com.example.sellerapp.data.model.UserData
 import com.example.sellerapp.databinding.PageFirstBinding
 import com.example.sellerapp.presentation.adapters.PageFirstAdapter
 import com.example.sellerapp.presentation.screens.addUser.AddClientScreen
+import com.example.sellerapp.presentation.screens.addUser.AddClientScreen
 import com.example.sellerapp.presentation.screens.editUser.EditClientScreen
 import com.example.sellerapp.utils.replaceScreen
 
@@ -26,37 +27,35 @@ class HomePage : Fragment(R.layout.page_first) {
     private val binding by viewBinding(PageFirstBinding::bind)
     private val viewModel = HomeViewModel()
     private val adapter by lazy { PageFirstAdapter() }
+    private val navController by lazy(LazyThreadSafetyMode.NONE) { findNavController() }
     private lateinit var dialog: Dialog
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initView()
-        viewModel.transferData.observe(viewLifecycleOwner) {
-            adapter.submitList(it)
-        }
     }
 
     private fun initView() {
-
         dialog = Dialog(requireContext())
-
         binding.recycler.adapter = adapter
         binding.recycler.layoutManager = LinearLayoutManager(requireContext())
         adapter.submitList(viewModel.getAllClients())
 
+        viewModel.transferData.observe(viewLifecycleOwner) {
+            adapter.submitList(it)
+        }
         adapter.setSelectedItemListener {
-            findNavController().navigate(HomePageDirections.actionHomePageToClientInfo(it))
+            val direction = HomePageDirections.actionHomePageToClientInfo(it.id)
+            navController.navigate(direction)
         }
         adapter.setLongSelectListener {
             showBottomSheetDialog(it)
         }
-
         binding.btnAdd.setOnClickListener {
             Log.d("TAG", "initView: bosildi")
             replaceScreen(AddClientScreen())
         }
     }
-
     fun showBottomSheetDialog(user: UserData) {
         dialog.setContentView(R.layout.dialog_edit_user)
 
@@ -91,6 +90,4 @@ class HomePage : Fragment(R.layout.page_first) {
         dialog.window?.attributes?.windowAnimations = R.style.DialogAnimation
         dialog.window?.setGravity(Gravity.BOTTOM)
     }
-
-
 }

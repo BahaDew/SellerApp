@@ -43,11 +43,14 @@
     <fragment
         android:id="@+id/addClientScreen"
         tools:layout="@layout/dialog_add_client"
-        android:name="com.example.sellerapp.presentation.screens.editUser.EditClientScreen"
+        android:name="com.example.sellerapp.presentation.screens.addUser.AddClientScreen"
         android:label="AddClientScreen" >
         <action
             android:id="@+id/action_addClientScreen_to_homePage"
             app:destination="@id/homePage" />
+        <argument
+            android:name="UserData"
+            app:argType="com.example.sellerapp.data.model.UserData" />
     </fragment>
     <fragment
         android:id="@+id/payTodayClientsPage"
@@ -56,11 +59,12 @@
     <fragment
         android:id="@+id/clientInfo"
         android:name="com.example.sellerapp.presentation.screens.userInfo.ClientInfo"
-        android:label="ClientInfo" >
-
-        <argument
-            android:name="userData"
-            app:argType="com.example.sellerapp.data.model.UserData" />
-
+        android:label="ClientInfo"
+        tools:layout="@layout/screen_info">
+        <action
+            android:id="@+id/action_clientInfo_to_homePage"
+            app:destination="@id/homePage" />
+        <argument android:name="userId"
+            app:argType="long"/>
     </fragment>
 </navigation>
