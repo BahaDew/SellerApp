@@ -40,22 +40,23 @@ class EditClientScreen : Fragment(R.layout.dialog_add_client) {
             popBackStack()
         }
 
-//        binding.btnSave.setOnClickListener{
-//            val userData = UserData(
-//                id = 0L,
-//                binding.firstname.text.toString(),
-//                binding.lastname.text.toString(),
-////                binding.number.text.toString(),
-//                "",
-//                binding.productName.text.toString(),
-//                binding.productPrice.text.toString(),
-//                binding.advancePayment.text.toString(),
-//                binding.paymentMonth.text.toString(),
-//                binding.comment.text.toString()
-//            )
-//            viewModel.editClient(userData)
-//            popBackStack()
-//        }
+        binding.btnSave.setOnClickListener{
+            val userData = UserData(
+                id = 0L,
+                binding.firstname.text.toString(),
+                binding.lastname.text.toString(),
+//                binding.number.text.toString(),
+                "",
+                binding.productName.text.toString(),
+                binding.productPrice.text.toString(),
+                binding.advancePayment.text.toString(),
+                binding.paymentMonth.text.toString(),
+                binding.comment.text.toString()
+            )
+            System.currentTimeMillis()
+            viewModel.editClient(userData)
+            popBackStack()
+        }
     }
     fun setOnSaveButtonListener(block:((UserData)-> Unit)) {
         this.saveButtonListener = block
