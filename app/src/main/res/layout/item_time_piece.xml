@@ -1,6 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:layout_margin="20dp"
+    app:cardCornerRadius="20dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/txt_muddat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="To'lash sanasi: "
+            android:textSize="18dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_margin="20dp"/>
+        <TextView
+            android:id="@+id/txt_summa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Summa: "
+            android:textSize="18dp"
+            app:layout_constraintTop_toBottomOf="@id/txt_muddat"
+            app:layout_constraintLeft_toLeftOf="@id/txt_muddat"
+            android:layout_marginTop="10dp"/>
+        <TextView
+            android:id="@+id/txt_tolandi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="To'landi: "
+            android:textSize="18dp"
+            app:layout_constraintTop_toBottomOf="@id/txt_summa"
+            app:layout_constraintLeft_toLeftOf="@id/txt_summa"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+        <TextView
+            android:id="@+id/muddat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/txt_muddat"
+            app:layout_constraintBottom_toBottomOf="@id/txt_muddat"
+            android:text="20.09.2024"
+            android:layout_marginEnd="20dp"/>
+        <TextView
+            android:id="@+id/summa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/txt_summa"
+            app:layout_constraintBottom_toBottomOf="@id/txt_summa"
+            android:text="2 000 000 so'm"
+            android:layout_marginEnd="20dp"/>
+        <TextView
+            android:id="@+id/tolandi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/txt_tolandi"
+            app:layout_constraintBottom_toBottomOf="@id/txt_tolandi"
+            android:text="1 000 000 so'm"
+            android:layout_marginEnd="20dp"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
