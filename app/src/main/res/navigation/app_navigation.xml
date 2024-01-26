@@ -33,9 +33,6 @@
         <action
             android:id="@+id/action_homePage_to_addClientScreen"
             app:destination="@id/addClientScreen" />
-        <action
-            android:id="@+id/action_homePage_to_clientInfo"
-            app:destination="@id/clientInfo" />
     </fragment>
     <fragment
         android:id="@+id/addClientScreen"

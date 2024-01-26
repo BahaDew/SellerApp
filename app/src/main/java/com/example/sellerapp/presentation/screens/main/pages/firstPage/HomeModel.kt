@@ -13,4 +13,8 @@ class HomeModel : HomeContract.Model{
         return repository.getAllUser()
     }
 
+    override fun deleteUser(userData: UserData) {
+        repository.deleteUser(userData)
+    }
+
 }

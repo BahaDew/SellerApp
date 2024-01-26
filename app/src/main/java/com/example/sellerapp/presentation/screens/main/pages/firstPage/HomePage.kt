@@ -1,8 +1,15 @@
 package com.example.sellerapp.presentation.screens.main.pages.firstPage
 
+import android.app.Dialog
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
+import android.view.Gravity
 import android.view.View
+import android.view.ViewGroup
+import android.widget.ImageView
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -19,13 +26,14 @@ class HomePage : Fragment(R.layout.page_first) {
     private val viewModel = HomeViewModel()
     private val adapter by lazy { PageFirstAdapter() }
     private val navController by lazy(LazyThreadSafetyMode.NONE) { findNavController() }
-
+    private lateinit var dialog: Dialog
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initView()
     }
 
     private fun initView() {
+        dialog = Dialog(requireContext())
         binding.recycler.adapter = adapter
         binding.recycler.layoutManager = LinearLayoutManager(requireContext())
         adapter.submitList(viewModel.getAllClients())
@@ -37,10 +45,45 @@ class HomePage : Fragment(R.layout.page_first) {
             val direction = HomePageDirections.actionHomePageToClientInfo(it.id)
             navController.navigate(direction)
         }
-
+        adapter.setLongSelectListener {
+            showBottomSheetDialog(it)
+        }
         binding.btnAdd.setOnClickListener {
-            navController.navigate(R.id.addClientScreen)
+            findNavController().navigate(R.id.addClientScreen)
         }
     }
+    fun showBottomSheetDialog(user: UserData) {
+        dialog.setContentView(R.layout.dialog_edit_user)
 
+
+        dialog.findViewById<ImageView>(R.id.delete).setOnClickListener{
+            viewModel.deleteUser(user)
+            dialog.dismiss()
+        }
+
+        dialog.findViewById<ImageView>(R.id.edit).setOnClickListener{
+            val editClientScreen = EditClientScreen()
+            editClientScreen.apply {
+                arguments = bundleOf(
+                    Pair("firstName", user.firstName),
+                    Pair("lastName", user.secondName),
+                    Pair("number", user.phoneNumber),
+                    Pair("productName", user.productName),
+                    Pair("productPrice", user.productPrice),
+                    Pair("advance_payment", user.advance_payment),
+                    Pair("monthOfRent", user.monthOfRent),
+                    Pair("comment", user.comment),
+                )
+            }
+            replaceScreen(editClientScreen)
+            dialog.dismiss()
+        }
+
+
+        dialog.show()
+        dialog.window?.setBackgroundDrawable(ColorDrawable( Color.TRANSPARENT))
+        dialog.window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+        dialog.window?.attributes?.windowAnimations = R.style.DialogAnimation
+        dialog.window?.setGravity(Gravity.BOTTOM)
+    }
 }

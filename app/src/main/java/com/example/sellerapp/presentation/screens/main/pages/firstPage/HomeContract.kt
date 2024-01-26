@@ -6,6 +6,7 @@ interface HomeContract {
     interface Model{
         fun addClient(userData: UserData)
         fun getAllClients() : List<UserData>
+        fun deleteUser(userData: UserData)
     }
     interface View{
 
@@ -13,6 +14,7 @@ interface HomeContract {
     interface ViewModel{
         fun getAllClients() : List<UserData>
         fun addClient(userData: UserData)
+        fun deleteUser(userData: UserData)
     }
 
 }
