@@ -34,11 +34,8 @@
             android:id="@+id/action_homePage_to_addClientScreen"
             app:destination="@id/addClientScreen" />
         <action
-            android:id="@+id/action_homePage_to_clientInfo"
+            android:id="@+id/action_homePage_to_clientInfo2"
             app:destination="@id/clientInfo" />
-        <argument
-            android:name="userData"
-            app:argType="com.example.sellerapp.data.model.UserData" />
     </fragment>
     <fragment
         android:id="@+id/addClientScreen"
@@ -50,6 +47,9 @@
             app:destination="@id/homePage" />
         <argument
             android:name="UserData"
+            app:argType="com.example.sellerapp.data.model.UserData" />
+        <argument
+            android:name="userdata"
             app:argType="com.example.sellerapp.data.model.UserData" />
     </fragment>
     <fragment
@@ -64,7 +64,5 @@
         <action
             android:id="@+id/action_clientInfo_to_homePage"
             app:destination="@id/homePage" />
-        <argument android:name="userId"
-            app:argType="long"/>
     </fragment>
 </navigation>

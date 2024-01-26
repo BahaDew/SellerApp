@@ -28,7 +28,6 @@ class HomePage : Fragment(R.layout.page_first) {
     private val adapter by lazy { PageFirstAdapter() }
     private val navController by lazy(LazyThreadSafetyMode.NONE) { findNavController() }
     private lateinit var dialog: Dialog
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initView()
@@ -44,15 +43,15 @@ class HomePage : Fragment(R.layout.page_first) {
             adapter.submitList(it)
         }
         adapter.setSelectedItemListener {
-            val direction = HomePageDirections.actionHomePageToClientInfo(it.id)
-            navController.navigate(direction)
+            val bundle = Bundle()
+            bundle.putLong("userId", it.id)
+            navController.navigate(R.id.clientInfo, bundle)
         }
         adapter.setLongSelectListener {
             showBottomSheetDialog(it)
         }
         binding.btnAdd.setOnClickListener {
-            Log.d("TAG", "initView: bosildi")
-            replaceScreen(AddClientScreen())
+            navController.navigate(R.id.addClientScreen)
         }
     }
     fun showBottomSheetDialog(user: UserData) {
@@ -65,21 +64,21 @@ class HomePage : Fragment(R.layout.page_first) {
         }
 
         dialog.findViewById<ImageView>(R.id.edit).setOnClickListener{
-            val editClientScreen = EditClientScreen()
-            editClientScreen.apply {
-                arguments = bundleOf(
-                    Pair("firstName", user.firstName),
-                    Pair("lastName", user.secondName),
-                    Pair("number", user.phoneNumber),
-                    Pair("productName", user.productName),
-                    Pair("productPrice", user.productPrice),
-                    Pair("advance_payment", user.advance_payment),
-                    Pair("monthOfRent", user.monthOfRent),
-                    Pair("comment", user.comment),
-                )
-            }
-            replaceScreen(editClientScreen)
-            dialog.dismiss()
+//            val editClientScreen = EditClientScreen()
+//            editClientScreen.apply {
+//                arguments = bundleOf(
+//                    Pair("firstName", user.firstName),
+//                    Pair("lastName", user.secondName),
+//                    Pair("number", user.phoneNumber),
+//                    Pair("productName", user.productName),
+//                    Pair("productPrice", user.productPrice),
+//                    Pair("advance_payment", user.advance_payment),
+//                    Pair("monthOfRent", user.monthOfRent),
+//                    Pair("comment", user.comment),
+//                )
+//            }
+//            replaceScreen(editClientScreen)
+//            dialog.dismiss()
         }
 
 
