@@ -18,6 +18,7 @@ class HomePage : Fragment(R.layout.page_first) {
     private val binding by viewBinding(PageFirstBinding::bind)
     private val viewModel = HomeViewModel()
     private val adapter by lazy { PageFirstAdapter() }
+    private val navController by lazy(LazyThreadSafetyMode.NONE) { findNavController() }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -33,11 +34,12 @@ class HomePage : Fragment(R.layout.page_first) {
             adapter.submitList(it)
         }
         adapter.setSelectedItemListener {
-
+            val direction = HomePageDirections.actionHomePageToClientInfo(it.id)
+            navController.navigate(direction)
         }
 
         binding.btnAdd.setOnClickListener {
-            findNavController().navigate(R.id.addClientScreen)
+            navController.navigate(R.id.addClientScreen)
         }
     }
 

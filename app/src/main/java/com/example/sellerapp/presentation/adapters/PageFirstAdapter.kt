@@ -40,7 +40,6 @@ class PageFirstAdapter: ListAdapter<UserData, PageFirstAdapter.ClientViewHolder>
 
             binding.root.setOnLongClickListener {
                 selectStudentIDListener?.invoke(currentList[absoluteAdapterPosition])
-
                 return@setOnLongClickListener true
             }
         }
