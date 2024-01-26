@@ -41,19 +41,18 @@ class EditClientScreen : Fragment(R.layout.dialog_add_client) {
         }
 
         binding.btnSave.setOnClickListener{
-            val userData = UserData(
-                id = 0L,
-                binding.firstname.text.toString(),
-                binding.lastname.text.toString(),
+//            val userData = UserData(
+//                id = 0L,
+//                binding.firstname.text.toString(),
+//                binding.lastname.text.toString(),
 //                binding.number.text.toString(),
-                "",
-                binding.productName.text.toString(),
-                binding.productPrice.text.toString(),
-                binding.advancePayment.text.toString(),
-                binding.paymentMonth.text.toString(),
-                binding.comment.text.toString()
-            )
-            viewModel.editClient(userData)
+//                "",
+//                binding.advancePayment.text.toString(),
+//                binding.paymentMonth.text.toString(),
+//                binding.comment.text.toString()
+//            )
+//            System.currentTimeMillis()
+//            viewModel.editClient(userData)
             popBackStack()
         }
     }
