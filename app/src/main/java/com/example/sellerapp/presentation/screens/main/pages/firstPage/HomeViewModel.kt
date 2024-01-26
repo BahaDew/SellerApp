@@ -14,8 +14,9 @@ class HomeViewModel : HomeContract.ViewModel {
         getAllClients()
     }
 
-    override fun getAllClients() {
+    override fun getAllClients() : List<UserData> {
         transferData.value = model.getAllClients()
+        return model.getAllClients()
     }
 
 }

@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.sellerapp.R
 import com.example.sellerapp.data.model.UserData
@@ -24,6 +25,10 @@ class HomePage : Fragment(R.layout.page_first) {
     }
 
     private fun initView() {
+        binding.recycler.adapter = adapter
+        binding.recycler.layoutManager = LinearLayoutManager(requireContext())
+        adapter.submitList(viewModel.getAllClients())
+
         viewModel.transferData.observe(viewLifecycleOwner) {
             adapter.submitList(it)
         }
@@ -32,8 +37,8 @@ class HomePage : Fragment(R.layout.page_first) {
 
 
         binding.btnAdd.setOnClickListener {
-//            replaceScreen(AddClientScreen())
             findNavController().navigate(R.id.addClientScreen)
         }
     }
+
 }

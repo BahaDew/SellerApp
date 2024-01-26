@@ -11,7 +11,7 @@ interface HomeContract {
 
     }
     interface ViewModel{
-        fun getAllClients()
+        fun getAllClients() : List<UserData>
         fun addClient(userData: UserData)
     }
 

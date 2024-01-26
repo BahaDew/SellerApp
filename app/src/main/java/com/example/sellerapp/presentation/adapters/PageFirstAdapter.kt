@@ -23,8 +23,9 @@ class PageFirstAdapter: ListAdapter<UserData, PageFirstAdapter.ClientViewHolder>
     }
 
     inner class ClientViewHolder(private var binding: ItemAddClientBinding) : ViewHolder(binding.root) {
-        private val firstName = binding.firstname
-        private val lastName = binding.lastname
+        private val productName = binding.productName
+        private val date = binding.date
+        private val productPrice = binding.price
 
         init {
             binding.root.setOnClickListener {
@@ -39,7 +40,9 @@ class PageFirstAdapter: ListAdapter<UserData, PageFirstAdapter.ClientViewHolder>
         }
 
         fun bind() {
-
+            productName.text = currentList[absoluteAdapterPosition].productName
+            productPrice.text = currentList[absoluteAdapterPosition].productPrice
+//            date.text = currentList[absoluteAdapterPosition].
         }
     }
 
@@ -50,6 +53,7 @@ class PageFirstAdapter: ListAdapter<UserData, PageFirstAdapter.ClientViewHolder>
     override fun onBindViewHolder(holder: ClientViewHolder, position: Int) {
         holder.bind()
     }
+
 
 
     fun setSelectStudentIDListener(block : (UserData) -> Unit) {
