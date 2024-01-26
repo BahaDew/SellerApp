@@ -14,11 +14,16 @@ interface ProductDao {
     @Query("SELECT * FROM product_table")
     fun getAllProduct() : List<ProductData>
 
+
+    @Query("SELECT * FROM product_table WHERE id = :id")
+    fun getProductById(id:Long) : ProductData
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertProduct(data : ProductData)
 
     @Update
     fun updateProduct(data: ProductData)
+
 
     @Delete
     fun deleteProduct(data: ProductData)

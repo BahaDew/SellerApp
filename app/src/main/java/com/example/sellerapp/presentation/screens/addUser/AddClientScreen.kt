@@ -1,6 +1,5 @@
 package com.example.sellerapp.presentation.screens.addUser
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -18,7 +17,6 @@ class AddClientScreen() : Fragment(R.layout.dialog_add_client) {
     private var saveButtonListener: ((UserData)-> Unit)? = null
     private val viewModel = EditClientViewModel()
 
-    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         Log.d("TAG", "onViewCreated ga tushdi")
@@ -32,7 +30,7 @@ class AddClientScreen() : Fragment(R.layout.dialog_add_client) {
             findNavController().navigateUp()
         }
 
-        binding.btnSave.setOnClickListener{
+//        binding.btnSave.setOnClickListener{
 //            val userData = UserData(
 //                id = 0L,
 //                binding.firstname.text.toString(),
@@ -47,8 +45,8 @@ class AddClientScreen() : Fragment(R.layout.dialog_add_client) {
 //            )
 //            Log.d("ttt", "save bosildi")
 //            viewModel.addClient(userData)
-           popBackStack()
-        }
+//           popBackStack()
+//        }
     }
     fun setOnSaveButtonListener(block:((UserData)-> Unit)) {
         this.saveButtonListener = block

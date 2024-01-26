@@ -22,6 +22,9 @@ class AppRepositoryImpl : AppRepository {
     override fun updateProduct(data: ProductData) = db.getProductDao().updateProduct(data)
 
     override fun deleteProduct(data: ProductData) = db.getProductDao().deleteProduct(data)
+    override fun getProductById(id: Long) : ProductData {
+        return db.getProductDao().getProductById(id)
+    }
 
     override fun getAllUser(): List<UserData> = db.getUserDao().getAllUsers()
 
