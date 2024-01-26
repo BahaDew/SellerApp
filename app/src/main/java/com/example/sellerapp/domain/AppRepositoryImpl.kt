@@ -31,5 +31,5 @@ class AppRepositoryImpl : AppRepository {
 
     override fun deleteUser(data: UserData) = db.getUserDao().deleteUser(data)
 
-    override fun getUserFromProduct(product_id: Long): UserData = db.getUserDao().getUserFromProduct(product_id)
+//    override fun getUserFromProduct(product_id: Long): UserData = db.getUserDao().getUserFromProduct(product_id)
 }
