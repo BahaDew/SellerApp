@@ -10,6 +10,7 @@ interface AddClientContract {
     }
     interface Model{
         fun addClient(userData: UserData)
+        fun getAllUsers(): List<UserData>?
     }
     interface ViewModel{
         fun addClient(userData: UserData)

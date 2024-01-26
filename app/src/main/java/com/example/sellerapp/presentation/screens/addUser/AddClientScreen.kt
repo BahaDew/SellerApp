@@ -33,36 +33,19 @@ class AddClientScreen() : Fragment(R.layout.dialog_add_client) {
         }
 
         binding.btnSave.setOnClickListener{
-            val homePage = MainScreen()
-            homePage.apply {
-                arguments = bundleOf(
-                    Pair("1", 0),
-                    Pair("2", binding.firstname.text.toString()),
-                    Pair("3", binding.lastname.text.toString()),
-                    Pair("4", binding.number.text.toString()),
-                    Pair("5", binding.productName.text.toString()),
-                    Pair("6", binding.productPrice.text.toString()),
-                    Pair("7", binding.advancePayment.text.toString()),
-                    Pair("8", binding.paymentMonth.text.toString()),
-                    Pair("9", binding.comment.text.toString()),
-                )
-            }
-            replaceScreenWithoutSave(MainScreen())
-
-//            val userData = UserData(
-//                id = 0L,
-//                binding.firstname.text.toString(),
-//                binding.lastname.text.toString(),
-//                binding.number.text.toString(),
-//                binding.productName.text.toString(),
-//                binding.productPrice.text.toString(),
-//                binding.advancePayment.text.toString(),
-//                binding.paymentMonth.text.toString(),
-//                binding.comment.text.toString()
-//            )
-//
-//            val direction = AddClientScreenDirections.actionAddClientScreenToHomePage()
-//            findNavController().navigate(direction)
+            val userData = UserData(
+                id = 0L,
+                binding.firstname.text.toString(),
+                binding.lastname.text.toString(),
+                binding.number.text.toString(),
+                binding.productName.text.toString(),
+                binding.productPrice.text.toString(),
+                binding.advancePayment.text.toString(),
+                binding.paymentMonth.text.toString(),
+                binding.comment.text.toString()
+            )
+            viewModel.addClient(userData)
+            findNavController().navigateUp()
         }
     }
     fun setOnSaveButtonListener(block:((UserData)-> Unit)) {

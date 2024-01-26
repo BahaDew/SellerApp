@@ -9,4 +9,8 @@ class HomeModel : HomeContract.Model{
         repository.addUser(userData)
     }
 
+    override fun getAllClients(): List<UserData> {
+        return repository.getAllUser()
+    }
+
 }
