@@ -18,5 +18,4 @@ data class UserData(
     @ColumnInfo("advance_payment") val advance_payment: String,
     @ColumnInfo("month_of_rent") val monthOfRent: String,
     @ColumnInfo("comment") val comment: String,
-
 ):Parcelable

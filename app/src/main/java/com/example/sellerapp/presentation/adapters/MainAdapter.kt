@@ -27,5 +27,4 @@ class MainAdapter(fm: FragmentManager, lifecycle: Lifecycle) : FragmentStateAdap
                 LateClientsPage()
             }
         }
-
 }
