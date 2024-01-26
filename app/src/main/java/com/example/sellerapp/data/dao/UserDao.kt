@@ -30,5 +30,5 @@ interface UserDao {
     fun getProductById(id : Long) : UserData
 
     @Query("SELECT * FROM user_table WHERE product_id = :produc_id AND start_date = :time")
-    fun getLatePayUsers(produc_id:Long, time : Long)
+    fun getLatePayUsers(produc_id:Long, time : Long) : List<UserData>
 }

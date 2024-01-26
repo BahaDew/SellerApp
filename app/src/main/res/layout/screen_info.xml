@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="#FFF">
+
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBar"
         android:layout_width="match_parent"
@@ -21,20 +22,20 @@
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="24dp"
         app:cardCornerRadius="16dp"
-        app:layout_constraintVertical_weight="2.5"
         app:layout_constraintBottom_toTopOf="@id/recycler"
-        app:layout_constraintTop_toBottomOf="@id/appBar"/>
+        app:layout_constraintTop_toBottomOf="@id/appBar"
+        app:layout_constraintVertical_weight="2.8" />
 
     <ImageView
         android:id="@+id/ic_back"
         android:layout_width="34dp"
         android:layout_height="34dp"
-        android:padding="6dp"
-        android:background="?selectableItemBackgroundBorderless"
-        android:src="@drawable/ic_back"
-        app:layout_constraintHorizontal_bias="0"
         android:layout_marginStart="16dp"
+        android:background="?selectableItemBackgroundBorderless"
+        android:padding="6dp"
+        android:src="@drawable/ic_back"
         app:layout_constraintBottom_toBottomOf="@id/appBar"
+        app:layout_constraintHorizontal_bias="0"
         app:layout_constraintLeft_toLeftOf="@id/appBar"
         app:layout_constraintRight_toRightOf="@id/appBar"
         app:layout_constraintTop_toTopOf="@id/appBar"
@@ -56,135 +57,129 @@
         android:id="@+id/recycler"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/container_userinfo"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:listitem="@layout/item_time_piece"
-        app:layout_constraintVertical_weight="5"/>
+        app:layout_constraintTop_toBottomOf="@id/container_userinfo"
+        app:layout_constraintVertical_weight="5"
+        tools:listitem="@layout/item_time_piece" />
+
     <TextView
         android:id="@+id/firstname_temp"
         style="@style/MyUserInfoText"
-        android:elevation="2dp"
         android:layout_marginTop="16dp"
+        android:elevation="2dp"
+        android:text="First Name: "
         app:layout_constraintLeft_toLeftOf="@id/container_userinfo"
-        app:layout_constraintTop_toTopOf="@id/container_userinfo"
-        android:text="First Name: " />
+        app:layout_constraintTop_toTopOf="@id/container_userinfo" />
 
     <TextView
         android:id="@+id/firstname"
         style="@style/MyUserInfoTextTwo"
-        android:text="Salom"
         android:elevation="2dp"
-        app:layout_constraintTop_toTopOf="@id/firstname_temp"
+        android:text="Salom"
         app:layout_constraintBottom_toBottomOf="@id/firstname_temp"
         app:layout_constraintStart_toEndOf="@id/firstname_temp"
-        />
+        app:layout_constraintTop_toTopOf="@id/firstname_temp" />
 
     <TextView
         android:id="@+id/lastname"
         style="@style/MyUserInfoTextTwo"
-        android:text="Salom"
         android:elevation="2dp"
-        app:layout_constraintTop_toTopOf="@id/lastname_temp"
+        android:text="Salom"
         app:layout_constraintBottom_toBottomOf="@id/lastname_temp"
         app:layout_constraintStart_toEndOf="@id/lastname_temp"
-        />
+        app:layout_constraintTop_toTopOf="@id/lastname_temp" />
 
     <TextView
         android:id="@+id/product_name"
         style="@style/MyUserInfoTextTwo"
-        android:text="Salom"
         android:elevation="2dp"
-        app:layout_constraintTop_toTopOf="@id/product_name_temp"
+        android:text="Salom"
         app:layout_constraintBottom_toBottomOf="@id/product_name_temp"
         app:layout_constraintStart_toEndOf="@id/product_name_temp"
-        />
+        app:layout_constraintTop_toTopOf="@id/product_name_temp" />
 
     <TextView
         android:id="@+id/product_price"
         style="@style/MyUserInfoTextTwo"
-        android:text="Salom"
         android:elevation="2dp"
-        app:layout_constraintTop_toTopOf="@id/product_price_temp"
+        android:text="Salom"
         app:layout_constraintBottom_toBottomOf="@id/product_price_temp"
         app:layout_constraintStart_toEndOf="@id/product_price_temp"
-        />
+        app:layout_constraintTop_toTopOf="@id/product_price_temp" />
 
     <TextView
         android:id="@+id/payment_month"
         style="@style/MyUserInfoTextTwo"
-        android:text="Salom"
         android:elevation="2dp"
-        app:layout_constraintTop_toTopOf="@id/payment_month_temp"
+        android:text="Salom"
         app:layout_constraintBottom_toBottomOf="@id/payment_month_temp"
         app:layout_constraintStart_toEndOf="@id/payment_month_temp"
-        />
+        app:layout_constraintTop_toTopOf="@id/payment_month_temp" />
 
     <TextView
         android:id="@+id/pay_One_month"
         style="@style/MyUserInfoTextTwo"
-        android:text="Salom"
         android:elevation="2dp"
-        app:layout_constraintTop_toTopOf="@id/pay_month_temp"
+        android:text="Salom"
         app:layout_constraintBottom_toBottomOf="@id/pay_month_temp"
         app:layout_constraintStart_toEndOf="@id/pay_month_temp"
-        />
+        app:layout_constraintTop_toTopOf="@id/pay_month_temp" />
 
     <TextView
         android:id="@+id/paid_months"
         style="@style/MyUserInfoTextTwo"
-        android:text="Salom"
         android:elevation="2dp"
-        app:layout_constraintTop_toTopOf="@id/payed_moth_temp"
+        android:text="Salom"
         app:layout_constraintBottom_toBottomOf="@id/payed_moth_temp"
         app:layout_constraintStart_toEndOf="@id/payed_moth_temp"
-        />
+        app:layout_constraintTop_toTopOf="@id/payed_moth_temp" />
 
     <TextView
         android:id="@+id/lastname_temp"
         style="@style/MyUserInfoText"
         android:elevation="2dp"
+        android:text="Last Name: "
         app:layout_constraintLeft_toLeftOf="@id/container_userinfo"
-        app:layout_constraintTop_toBottomOf="@id/firstname_temp"
-        android:text="Last Name: " />
+        app:layout_constraintTop_toBottomOf="@id/firstname_temp" />
 
     <TextView
         android:id="@+id/product_name_temp"
         style="@style/MyUserInfoText"
         android:elevation="2dp"
+        android:text="Product: "
         app:layout_constraintLeft_toLeftOf="@id/container_userinfo"
-        app:layout_constraintTop_toBottomOf="@id/lastname_temp"
-        android:text="Product: " />
+        app:layout_constraintTop_toBottomOf="@id/lastname_temp" />
 
     <TextView
         android:id="@+id/product_price_temp"
         style="@style/MyUserInfoText"
         android:elevation="2dp"
+        android:text="Price: "
         app:layout_constraintLeft_toLeftOf="@id/container_userinfo"
-        app:layout_constraintTop_toBottomOf="@id/product_name_temp"
-        android:text="Price: " />
+        app:layout_constraintTop_toBottomOf="@id/product_name_temp" />
 
     <TextView
         android:id="@+id/payment_month_temp"
         style="@style/MyUserInfoText"
         android:elevation="2dp"
+        android:text="Payment Term: "
         app:layout_constraintLeft_toLeftOf="@id/container_userinfo"
-        app:layout_constraintTop_toBottomOf="@id/product_price_temp"
-        android:text="Payment Term: " />
+        app:layout_constraintTop_toBottomOf="@id/product_price_temp" />
 
     <TextView
         android:id="@+id/pay_month_temp"
         style="@style/MyUserInfoText"
         android:elevation="2dp"
+        android:text="Per Month: "
         app:layout_constraintLeft_toLeftOf="@id/container_userinfo"
-        app:layout_constraintTop_toBottomOf="@id/payment_month_temp"
-        android:text="Per Month: " />
+        app:layout_constraintTop_toBottomOf="@id/payment_month_temp" />
 
     <TextView
         android:id="@+id/payed_moth_temp"
         style="@style/MyUserInfoText"
         android:elevation="2dp"
+        android:text="Paid Months: "
         app:layout_constraintLeft_toLeftOf="@id/container_userinfo"
-        app:layout_constraintTop_toBottomOf="@id/pay_month_temp"
-        android:text="Paid Months: " />
+        app:layout_constraintTop_toBottomOf="@id/pay_month_temp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

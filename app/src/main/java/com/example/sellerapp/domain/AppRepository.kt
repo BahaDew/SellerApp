@@ -16,6 +16,5 @@ interface AppRepository {
     fun deleteUser(data: UserData)
     fun getUserById(id: Long) : UserData
 
-    fun getProductById(id : Long) : ProductData
 //    fun getUserFromProduct(product_id : Long) : UserData
 }
