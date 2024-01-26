@@ -12,6 +12,7 @@ import com.example.sellerapp.R
 import com.example.sellerapp.data.model.UserData
 import com.example.sellerapp.databinding.DialogAddClientBinding
 import com.example.sellerapp.databinding.ScreenSplashBinding
+import com.example.sellerapp.presentation.screens.main.MainScreen
 import com.example.sellerapp.presentation.screens.main.pages.firstPage.HomePage
 import com.example.sellerapp.utils.popBackStack
 import com.example.sellerapp.utils.replaceScreenWithoutSave
@@ -32,7 +33,7 @@ class AddClientScreen() : Fragment(R.layout.dialog_add_client) {
         }
 
         binding.btnSave.setOnClickListener{
-            val homePage = HomePage()
+            val homePage = MainScreen()
             homePage.apply {
                 arguments = bundleOf(
                     Pair("1", 0),
@@ -46,7 +47,7 @@ class AddClientScreen() : Fragment(R.layout.dialog_add_client) {
                     Pair("9", binding.comment.text.toString()),
                 )
             }
-            replaceScreenWithoutSave(homePage)
+            replaceScreenWithoutSave(MainScreen())
 
 //            val userData = UserData(
 //                id = 0L,
