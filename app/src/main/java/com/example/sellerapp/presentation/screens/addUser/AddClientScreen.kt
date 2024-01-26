@@ -60,7 +60,6 @@ class AddClientScreen() : Fragment(R.layout.dialog_add_client) {
 //                binding.paymentMonth.text.toString(),
 //                binding.comment.text.toString()
 //            )
-//
 //            val direction = AddClientScreenDirections.actionAddClientScreenToHomePage()
 //            findNavController().navigate(direction)
         }

@@ -5,7 +5,6 @@ import com.example.sellerapp.presentation.screens.addUser.AddClientModel
 
 class HomeViewModel : HomeContract.Model {
     val model = HomeModel()
-
     override fun addClient(userData: UserData) {
         model.addClient(userData)
     }
