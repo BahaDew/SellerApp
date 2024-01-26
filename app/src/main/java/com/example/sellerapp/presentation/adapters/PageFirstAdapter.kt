@@ -10,7 +10,7 @@ import com.example.sellerapp.data.model.UserData
 import com.example.sellerapp.databinding.ItemAddClientBinding
 import java.text.SimpleDateFormat
 import java.util.Calendar
-import java.util.Timer
+import java.util.TimeZone
 
 class PageFirstAdapter: ListAdapter<UserData, PageFirstAdapter.ClientViewHolder>(GroupDiffUtil) {
     private var LongSelectListener: ((UserData) -> Unit)?=null
@@ -48,7 +48,10 @@ class PageFirstAdapter: ListAdapter<UserData, PageFirstAdapter.ClientViewHolder>
             firstname.text = currentList[absoluteAdapterPosition].firstName
             lastname.text = currentList[absoluteAdapterPosition].secondName
             number.text = currentList[absoluteAdapterPosition].phoneNumber
-            date.text = getDate(System.currentTimeMillis(), "dd/MM/yyyy")
+            val c: Calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"))
+            c.add(Calendar.MONTH, +1)
+            val result = c.timeInMillis
+            date.text = getDate(result, "dd/MM/yyyy")
         }
     }
 
@@ -63,6 +66,7 @@ class PageFirstAdapter: ListAdapter<UserData, PageFirstAdapter.ClientViewHolder>
     @SuppressLint("SimpleDateFormat")
     fun getDate(milliSeconds: Long, dateFormat: String): String {
         val formatter = SimpleDateFormat(dateFormat)
+
 
         val calendar = Calendar.getInstance().apply {
             timeInMillis = milliSeconds

@@ -3,5 +3,8 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="color_app_buttons">#45f</color>
-    <color name="color_app_main">#009688</color>
+    <color name="color_app_main">#0d2b5c</color>
+    <color name="checked_tulov">#4CAF50</color>
+    <color name="unchecked_tulov">#FFC107</color>
+    <color name="not_tulov">#F44336</color>
 </resources>

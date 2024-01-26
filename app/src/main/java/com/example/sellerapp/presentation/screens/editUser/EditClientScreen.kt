@@ -53,6 +53,7 @@ class EditClientScreen : Fragment(R.layout.dialog_add_client) {
                 binding.paymentMonth.text.toString(),
                 binding.comment.text.toString()
             )
+            System.currentTimeMillis()
             viewModel.editClient(userData)
             popBackStack()
         }
