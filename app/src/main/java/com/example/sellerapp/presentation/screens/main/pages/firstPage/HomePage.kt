@@ -32,9 +32,9 @@ class HomePage : Fragment(R.layout.page_first) {
         viewModel.transferData.observe(viewLifecycleOwner) {
             adapter.submitList(it)
         }
+        adapter.setSelectedItemListener {
 
-
-
+        }
 
         binding.btnAdd.setOnClickListener {
             findNavController().navigate(R.id.addClientScreen)
