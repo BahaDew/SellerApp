@@ -6,6 +6,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
+import com.example.sellerapp.data.model.ProductData
 import com.example.sellerapp.data.model.UserData
 
 @Dao
@@ -22,9 +23,10 @@ interface UserDao {
 
     @Delete
     fun deleteUser(data: UserData)
-    @Query("SELECT * FROM user_table Where id = :id")
+    @Query("SELECT * FROM user_table WHERE id = :id")
     fun getUserById(id: Long): UserData
 
-//    @Query("SELECT * FROM user_table WHERE product_id= :product_id LIMIT 1")
-//    fun getUserFromProduct(product_id : Long) :UserData
+    @Query("SELECT * FROM user_table WHERE product_id = :id LIMIT 1")
+    fun getProductById(id : Long) : UserData
+
 }
