@@ -23,8 +23,6 @@ class PageFirstAdapter: ListAdapter<UserData, PageFirstAdapter.ClientViewHolder>
     }
 
     inner class ClientViewHolder(private var binding: ItemAddClientBinding) : ViewHolder(binding.root) {
-        private val firstName = binding.firstname
-        private val lastName = binding.lastname
 
         init {
             binding.root.setOnClickListener {
