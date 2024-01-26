@@ -23,6 +23,5 @@ class ClientInfo : Fragment(R.layout.screen_info) {
         binding.recycler.adapter = adapter
         binding.recycler.layoutManager = LinearLayoutManager(requireContext())
         binding.fullName.text = userId.toString()
-
     }
 }
