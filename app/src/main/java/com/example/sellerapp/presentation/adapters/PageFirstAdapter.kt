@@ -13,7 +13,7 @@ import java.util.Calendar
 import java.util.Timer
 
 class PageFirstAdapter: ListAdapter<UserData, PageFirstAdapter.ClientViewHolder>(GroupDiffUtil) {
-    private var selectStudentIDListener: ((UserData) -> Unit)?=null
+    private var LongSelectListener: ((UserData) -> Unit)?=null
     private var selectedItemListener: ((UserData) -> Unit)?=null
 
     object GroupDiffUtil : DiffUtil.ItemCallback<UserData>() {
@@ -39,7 +39,7 @@ class PageFirstAdapter: ListAdapter<UserData, PageFirstAdapter.ClientViewHolder>
             }
 
             binding.root.setOnLongClickListener {
-                selectStudentIDListener?.invoke(currentList[absoluteAdapterPosition])
+                LongSelectListener?.invoke(currentList[absoluteAdapterPosition])
 
                 return@setOnLongClickListener true
             }
@@ -72,8 +72,8 @@ class PageFirstAdapter: ListAdapter<UserData, PageFirstAdapter.ClientViewHolder>
     }
 
 
-    fun setSelectStudentIDListener(block : (UserData) -> Unit) {
-        this.selectStudentIDListener = block
+    fun setLongSelectListener(block : (UserData) -> Unit) {
+        this.LongSelectListener = block
     }
     fun setSelectedItemListener(block : (UserData) -> Unit) {
         this.selectedItemListener = block
