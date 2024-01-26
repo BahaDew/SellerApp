@@ -19,7 +19,6 @@ import com.example.sellerapp.data.model.UserData
 import com.example.sellerapp.databinding.PageFirstBinding
 import com.example.sellerapp.presentation.adapters.PageFirstAdapter
 import com.example.sellerapp.presentation.screens.addUser.AddClientScreen
-import com.example.sellerapp.presentation.screens.addUser.AddClientScreen
 import com.example.sellerapp.presentation.screens.editUser.EditClientScreen
 import com.example.sellerapp.utils.replaceScreen
 
