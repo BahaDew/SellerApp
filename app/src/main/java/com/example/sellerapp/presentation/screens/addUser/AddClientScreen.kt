@@ -1,5 +1,6 @@
 package com.example.sellerapp.presentation.screens.addUser
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -17,6 +18,7 @@ class AddClientScreen() : Fragment(R.layout.dialog_add_client) {
     private var saveButtonListener: ((UserData)-> Unit)? = null
     private val viewModel = EditClientViewModel()
 
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         Log.d("TAG", "onViewCreated ga tushdi")
@@ -31,20 +33,20 @@ class AddClientScreen() : Fragment(R.layout.dialog_add_client) {
         }
 
         binding.btnSave.setOnClickListener{
-            val userData = UserData(
-                id = 0L,
-                binding.firstname.text.toString(),
-                binding.lastname.text.toString(),
-//                binding.number.text.toString(),
-                "",
-                binding.productName.text.toString(),
-                binding.productPrice.text.toString(),
-                binding.advancePayment.text.toString(),
-                binding.paymentMonth.text.toString(),
-                binding.comment.text.toString()
-            )
-            Log.d("ttt", "save bosildi")
-            viewModel.addClient(userData)
+//            val userData = UserData(
+//                id = 0L,
+//                binding.firstname.text.toString(),
+//                binding.lastname.text.toString(),
+////                binding.number.text.toString(),
+//                "",
+//                binding.productName.text.toString(),
+//                binding.productPrice.text.toString(),
+//                binding.advancePayment.text.toString(),
+//                binding.paymentMonth.text.toString(),
+//                binding.comment.text.toString()
+//            )
+//            Log.d("ttt", "save bosildi")
+//            viewModel.addClient(userData)
            popBackStack()
         }
     }

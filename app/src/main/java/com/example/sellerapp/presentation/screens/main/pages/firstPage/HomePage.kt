@@ -63,21 +63,21 @@ class HomePage : Fragment(R.layout.page_first) {
         }
 
         dialog.findViewById<ImageView>(R.id.edit).setOnClickListener{
-//            val editClientScreen = EditClientScreen()
-//            editClientScreen.apply {
-//                arguments = bundleOf(
-//                    Pair("firstName", user.firstName),
-//                    Pair("lastName", user.secondName),
+            val editClientScreen = EditClientScreen()
+            editClientScreen.apply {
+                arguments = bundleOf(
+                    Pair("firstName", user.firstName),
+                    Pair("lastName", user.secondName),
 //                    Pair("number", user.phoneNumber),
 //                    Pair("productName", user.productName),
 //                    Pair("productPrice", user.productPrice),
-//                    Pair("advance_payment", user.advance_payment),
-//                    Pair("monthOfRent", user.monthOfRent),
-//                    Pair("comment", user.comment),
-//                )
-//            }
-//            replaceScreen(editClientScreen)
-//            dialog.dismiss()
+                    Pair("advance_payment", user.advance_payment),
+                    Pair("monthOfRent", user.monthOfRent),
+                    Pair("comment", user.comment),
+                )
+            }
+            replaceScreen(editClientScreen)
+            dialog.dismiss()
         }
 
 
