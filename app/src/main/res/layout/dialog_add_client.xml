@@ -113,15 +113,16 @@
         app:helperText="Your Login"
         android:layout_marginHorizontal="16dp">
 
-        <com.google.android.material.textfield.TextInputEditText
+
+        <com.vicmikhailau.maskededittext.MaskedEditText
             android:id="@+id/number"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="Number"
-            android:maxLength="13"
             android:fontFamily="@font/nunito"
-            android:inputType="number"
-            android:lines="1" />
+            android:inputType="phone"
+            android:hint="Number"
+            app:mask="(+###) ## ### ## ##"
+            android:lines="1"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -153,7 +154,6 @@
         android:layout_marginTop="8dp"
         app:helperText="Your Login"
         android:layout_marginHorizontal="16dp">
-
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/product_price"
             android:layout_width="match_parent"
