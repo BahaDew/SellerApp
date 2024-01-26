@@ -13,5 +13,6 @@ interface AppRepository {
     fun addUser(data: UserData)
     fun updateUser(data: UserData)
     fun deleteUser(data: UserData)
+    fun getUserById(id: Long) : UserData
 //    fun getUserFromProduct(product_id : Long) : UserData
 }

@@ -57,7 +57,6 @@ class HomePage : Fragment(R.layout.page_first) {
     fun showBottomSheetDialog(user: UserData) {
         dialog.setContentView(R.layout.dialog_edit_user)
 
-
         dialog.findViewById<ImageView>(R.id.delete).setOnClickListener{
             viewModel.deleteUser(user)
             dialog.dismiss()
