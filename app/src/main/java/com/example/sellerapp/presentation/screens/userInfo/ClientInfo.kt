@@ -30,7 +30,9 @@ class ClientInfo : Fragment(R.layout.screen_info) {
         viewModel.userLD.observe(viewLifecycleOwner) {
             binding.firstname.text = it.firstName
             binding.lastname.text = it.secondName
-            binding.productName
+        }
+        viewModel.productLD.observe(viewLifecycleOwner) {
+
         }
 
 //        binding.lastname.text = user.secondName
