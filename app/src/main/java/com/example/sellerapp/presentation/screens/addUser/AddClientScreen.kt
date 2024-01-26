@@ -1,6 +1,8 @@
 package com.example.sellerapp.presentation.screens.addUser
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
@@ -11,6 +13,7 @@ import com.example.sellerapp.data.model.UserData
 import com.example.sellerapp.databinding.DialogAddClientBinding
 import com.example.sellerapp.presentation.screens.editUser.EditClientViewModel
 import com.example.sellerapp.utils.popBackStack
+import java.util.regex.Pattern
 
 class AddClientScreen() : Fragment(R.layout.dialog_add_client) {
     private val binding by viewBinding(DialogAddClientBinding::bind)
@@ -22,7 +25,84 @@ class AddClientScreen() : Fragment(R.layout.dialog_add_client) {
         Log.d("TAG", "onViewCreated ga tushdi")
         binding.appBarText.text = "Add Client Data"
         initView()
+        initDialogListeners()
+        initLastNameError()
+
     }
+
+    private fun initDialogListeners() {
+        binding.firstname.addTextChangedListener(object : TextWatcher{
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+                val latinPattern = Pattern.compile("[a-zA-Z]+")
+                val inputText = s?.toString() ?: ""
+
+                if (!latinPattern.matcher(inputText).matches()) {
+                    binding.firstname.error = "Only Latin letters are allowed"
+                } else {
+                    // Clear the error if the input is valid
+                    binding.firstname.error = null
+                }
+
+
+                if(s.toString().length <= 3){
+                    binding.firstname.error = "Must be at least 2 letters!!!"
+                }
+
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+
+            }
+
+        })
+    }
+
+    private fun initLastNameError(){
+        binding.lastname.addTextChangedListener(object : TextWatcher{
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                var a = "zxcvbnmasdfghjklqwertyuiopZXCVBNMASDFGHJKLQWERTYUIOP"
+
+                if (!s.toString().contains(a)) {
+                    binding.firstname.error = "Faqat lotin harflardan iborat bulishi kerak!!!"
+                }
+                if(s.toString().length <= 2){
+                    binding.firstname.error = "Familiyangiz kamida 5 harfdan iborat bo'lishi kerak!!!"
+                }
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+
+            }
+
+        })
+    }
+    private fun initProductPrice(){
+        binding.advancePayment.addTextChangedListener(object : TextWatcher{
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                var summ = s.toString().toLong()
+                if(summ < 100_000){
+                    binding.productPrice.error = "Mahsulot narxi 100_000 so`mdan past bo'lmasligi zarur :)"
+                }
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+            }
+
+        })
+    }
+
+
 
     private fun initView() {
 

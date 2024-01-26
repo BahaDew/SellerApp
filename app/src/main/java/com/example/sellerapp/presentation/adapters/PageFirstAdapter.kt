@@ -56,7 +56,7 @@ class PageFirstAdapter: ListAdapter<UserData, PageFirstAdapter.ClientViewHolder>
         return ClientViewHolder(ItemAddClientBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
 
-    override fun onBindViewHolder(holder: ClientViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ClientViewHolder,  position: Int) {
         holder.bind()
     }
 
