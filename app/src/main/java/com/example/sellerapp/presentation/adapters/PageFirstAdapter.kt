@@ -22,7 +22,8 @@ class PageFirstAdapter: ListAdapter<UserData, PageFirstAdapter.ClientViewHolder>
         }
 
         override fun areContentsTheSame(oldItem: UserData, newItem: UserData): Boolean {
-            return oldItem.firstName == newItem.firstName  && oldItem.phoneNumber == newItem.phoneNumber
+            //return oldItem.firstName == newItem.firstName  && oldItem.phoneNumber == newItem.phoneNumber
+            return oldItem.hashCode() == newItem.hashCode()
         }
     }
 

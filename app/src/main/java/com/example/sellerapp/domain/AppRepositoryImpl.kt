@@ -1,5 +1,6 @@
 package com.example.sellerapp.domain
 
+import android.util.Log
 import com.example.sellerapp.data.model.ProductData
 import com.example.sellerapp.data.model.UserData
 import com.example.sellerapp.data.source.MyDatabase
@@ -25,7 +26,10 @@ class AppRepositoryImpl : AppRepository {
 
     override fun getAllUser(): List<UserData> = db.getUserDao().getAllUsers()
 
-    override fun addUser(data: UserData) = db.getUserDao().insertUser(data)
+    override fun addUser(data: UserData) {
+        Log.d("ttt", data.firstName)
+        db.getUserDao().insertUser(data)
+    }
 
     override fun updateUser(data: UserData) = db.getUserDao().updateUser(data)
 

@@ -4,6 +4,7 @@ import android.app.Dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.util.Log
 import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
@@ -17,6 +18,7 @@ import com.example.sellerapp.R
 import com.example.sellerapp.data.model.UserData
 import com.example.sellerapp.databinding.PageFirstBinding
 import com.example.sellerapp.presentation.adapters.PageFirstAdapter
+import com.example.sellerapp.presentation.screens.addUser.AddClientScreen
 import com.example.sellerapp.presentation.screens.editUser.EditClientScreen
 import com.example.sellerapp.utils.replaceScreen
 
@@ -29,27 +31,29 @@ class HomePage : Fragment(R.layout.page_first) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initView()
+        viewModel.transferData.observe(viewLifecycleOwner) {
+            adapter.submitList(it)
+        }
     }
 
     private fun initView() {
+
         dialog = Dialog(requireContext())
 
         binding.recycler.adapter = adapter
         binding.recycler.layoutManager = LinearLayoutManager(requireContext())
         adapter.submitList(viewModel.getAllClients())
 
-        viewModel.transferData.observe(viewLifecycleOwner) {
-            adapter.submitList(it)
-        }
         adapter.setSelectedItemListener {
-            findNavController().navigate(R.id.clientInfo)
+            findNavController().navigate(HomePageDirections.actionHomePageToClientInfo(it))
         }
         adapter.setLongSelectListener {
             showBottomSheetDialog(it)
         }
 
         binding.btnAdd.setOnClickListener {
-            findNavController().navigate(R.id.addClientScreen)
+            Log.d("TAG", "initView: bosildi")
+            replaceScreen(AddClientScreen())
         }
     }
 
