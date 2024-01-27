@@ -64,8 +64,6 @@ dependencies {
     // MASKED EDIT TEXT
     implementation("io.github.vicmikhailau:MaskedEditText:5.0.1")
 
-
-
     kapt("androidx.room:room-compiler:$room_version")
 
     val nav_version = "2.7.6"

@@ -3,6 +3,7 @@ package com.example.sellerapp.presentation.screens.splash
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -17,8 +18,9 @@ class SplashScreen: Fragment(R.layout.screen_splash) {
     private val binding by viewBinding(ScreenSplashBinding::bind)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Handler().postDelayed({
-            findNavController().navigate(R.id.mainScreen)
-        }, 1000)
+        Handler(Looper.getMainLooper()).postDelayed({
+            val directions = SplashScreenDirections.actionSplashScreenToMainScreen()
+            findNavController().navigate(directions)
+        }, 1500)
     }
 }

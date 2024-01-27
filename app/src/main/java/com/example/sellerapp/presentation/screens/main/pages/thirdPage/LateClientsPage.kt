@@ -13,7 +13,6 @@ class LateClientsPage : Fragment(R.layout.page_third) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         binding.placeholder.visibility = View.VISIBLE
     }
 }

@@ -54,7 +54,7 @@ class HomePage : Fragment(R.layout.page_first) {
             navController.navigate(R.id.addClientScreen)
         }
     }
-    fun showBottomSheetDialog(user: UserData) {
+    private fun showBottomSheetDialog(user: UserData) {
         dialog.setContentView(R.layout.dialog_edit_user)
 
         dialog.findViewById<ImageView>(R.id.delete).setOnClickListener{
@@ -63,23 +63,11 @@ class HomePage : Fragment(R.layout.page_first) {
         }
 
         dialog.findViewById<ImageView>(R.id.edit).setOnClickListener{
-            val editClientScreen = EditClientScreen()
-            editClientScreen.apply {
-                arguments = bundleOf(
-                    Pair("firstName", user.firstName),
-                    Pair("lastName", user.secondName),
-//                    Pair("number", user.phoneNumber),
-//                    Pair("productName", user.productName),
-//                    Pair("productPrice", user.productPrice),
-                    Pair("advance_payment", user.advance_payment),
-                    Pair("monthOfRent", user.monthOfRent),
-                    Pair("comment", user.comment),
-                )
-            }
-            replaceScreen(editClientScreen)
+            val bundle = Bundle()
+            bundle.putLong("userId", user.id)
+            navController.navigate(R.id.edit, bundle)
             dialog.dismiss()
         }
-
 
         dialog.show()
         dialog.window?.setBackgroundDrawable(ColorDrawable( Color.TRANSPARENT))
