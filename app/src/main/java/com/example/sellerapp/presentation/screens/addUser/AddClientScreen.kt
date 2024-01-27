@@ -27,6 +27,7 @@ class AddClientScreen() : Fragment(R.layout.dialog_add_client) {
         initView()
         initDialogListeners()
         initLastNameError()
+        initProductPrice()
 
     }
 
@@ -41,15 +42,15 @@ class AddClientScreen() : Fragment(R.layout.dialog_add_client) {
                 val inputText = s?.toString() ?: ""
 
                 if (!latinPattern.matcher(inputText).matches()) {
-                    binding.firstname.error = "Only Latin letters are allowed"
+                    binding.firstname.error = "Only Latin letters are allowed."
                 } else {
                     // Clear the error if the input is valid
                     binding.firstname.error = null
                 }
 
 
-                if(s.toString().length <= 3){
-                    binding.firstname.error = "Must be at least 2 letters!!!"
+                if(s.toString().length <= 2){
+                    binding.firstname.error = "Ismingiz kamida 3 harfdan iborat bo'lishi kerak!!!"
                 }
 
             }
@@ -68,13 +69,19 @@ class AddClientScreen() : Fragment(R.layout.dialog_add_client) {
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                var a = "zxcvbnmasdfghjklqwertyuiopZXCVBNMASDFGHJKLQWERTYUIOP"
+                val latinPattern = Pattern.compile("[a-zA-Z]+")
+                val inputText = s?.toString() ?: ""
 
-                if (!s.toString().contains(a)) {
-                    binding.firstname.error = "Faqat lotin harflardan iborat bulishi kerak!!!"
+                if (!latinPattern.matcher(inputText).matches()) {
+                    binding.lastname.error = "Only Latin letters are allowed."
+                } else {
+                    // Clear the error if the input is valid
+                    binding.lastname.error = null
                 }
+
                 if(s.toString().length <= 2){
-                    binding.firstname.error = "Familiyangiz kamida 5 harfdan iborat bo'lishi kerak!!!"
+                    binding.lastname.error = "\n" +
+                            "Must be at least 5 letters!!!"
                 }
             }
 
@@ -92,7 +99,7 @@ class AddClientScreen() : Fragment(R.layout.dialog_add_client) {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 var summ = s.toString().toLong()
                 if(summ < 100_000){
-                    binding.productPrice.error = "Mahsulot narxi 100_000 so`mdan past bo'lmasligi zarur :)"
+                    binding.productPrice.error = "The price of the product must not be lower than 100,000 summ :)"
                 }
             }
 
@@ -110,25 +117,25 @@ class AddClientScreen() : Fragment(R.layout.dialog_add_client) {
             findNavController().navigateUp()
         }
 
-//        binding.btnSave.setOnClickListener{
-//            val userData = UserData(
-//                id = 0L,
-//                binding.firstname.text.toString(),
-//                binding.lastname.text.toString(),
-////                binding.number.text.toString(),
-//                "",
-//                binding.productName.text.toString(),
-//                binding.productPrice.text.toString(),
-//                binding.advancePayment.text.toString(),
-//                binding.paymentMonth.text.toString(),
-//                binding.comment.text.toString()
-//            )
-//            Log.d("ttt", "save bosildi")
-//            viewModel.addClient(userData)
-//           popBackStack()
-//        }
+      /*  binding.btnSave.setOnClickListener{
+            val userData = UserData(
+                id = 0L,
+                binding.firstname.text.toString(),
+                binding.lastname.text.toString(),
+              //  binding.number.text.toString(),
+                //binding.p"",
+                binding.productName.text.toString(),
+               // binding.productPrice.text.toString(),
+                binding.advancePayment.text.toString(),
+                binding.paymentMonth.text.toString(),
+                binding.comment.text.toString()
+            )
+            Log.d("ttt", "save bosildi")
+            viewModel.addClient(userData)
+           popBackStack()
+        }*/
     }
-    fun setOnSaveButtonListener(block:((UserData)-> Unit)) {
+   /* fun setOnSaveButtonListener(block:((UserData)-> Unit)) {
         this.saveButtonListener = block
-    }
+    }*/
 }

@@ -27,8 +27,8 @@ interface UserDao {
     fun getUserById(id: Long): UserData
 
     @Query("SELECT * FROM user_table WHERE product_id = :id LIMIT 1")
-    fun getProductById(id : Long) : UserData
+    fun getProductById(id : Long) : List<UserData>
 
     @Query("SELECT * FROM user_table WHERE product_id = :produc_id AND start_date = :time")
-    fun getLatePayUsers(produc_id:Long, time : Long)
+    fun getLatePayUsers(produc_id:Long, time : Long) : List<UserData>
 }

@@ -9,11 +9,11 @@ import com.example.sellerapp.databinding.ItemTodayCustomerPaysBinding
 class PageSecondAdapter : ListAdapter<ProductData, PageSecondAdapter.MyHolder>(TodayCustomerPaysDiffUtil){
     object TodayCustomerPaysDiffUtil : DiffUtil.ItemCallback<ProductData>() {
         override fun areItemsTheSame(oldItem: ProductData, newItem: ProductData): Boolean {
-            return oldItem.monthPrice == newItem.monthPrice
+            return true
         }
 
         override fun areContentsTheSame(oldItem: ProductData, newItem: ProductData): Boolean {
-           return oldItem.monthPrice == newItem.monthPrice
+           return false
         }
 
     }
@@ -32,7 +32,7 @@ class PageSecondAdapter : ListAdapter<ProductData, PageSecondAdapter.MyHolder>(T
     inner class MyHolder(private var binding: ItemTodayCustomerPaysBinding): ViewHolder(binding.root){
         fun bind(){
             val pos = getItem(absoluteAdapterPosition)
-            binding.amountPayable.text = pos.monthPrice.toString()
+           // binding.amountPayable.text = pos.monthPrice.toString()
             binding.productName.text = pos.productName
 
         }
