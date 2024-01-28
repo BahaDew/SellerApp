@@ -1,20 +1,20 @@
 package com.example.sellerapp.presentation.screens.addUser
 
+import com.example.sellerapp.data.model.ProductData
 import com.example.sellerapp.data.model.UserData
 import com.example.sellerapp.domain.AppRepositoryImpl
-import com.example.sellerapp.presentation.screens.editUser.EditClientContract
 
-class AddClientModel : EditClientContract.Model {
+class AddClientModel {
     private val repository = AppRepositoryImpl.getInstance()
-    override fun getAllUsers(): List<UserData> {
+    fun getAllUsers(): List<UserData> {
         return repository.getAllUser()
     }
 
-    override fun editClient(userData: UserData) {
-        repository.updateUser(userData)
+    fun addClient(userData: UserData): Long {
+        return repository.addUser(userData)
     }
 
-    override fun addClient(userData: UserData) {
-        repository.addUser(userData)
+    fun addProduct(productData: ProductData) {
+        repository.addProduct(productData)
     }
 }

@@ -6,17 +6,10 @@
     android:layout_height="match_parent">
 
     <androidx.recyclerview.widget.RecyclerView
-
         android:id="@+id/recycler"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintVertical_bias=".2"
-        tools:layout_editor_absoluteX="-45dp"
-        tools:listitem="@layout/item_today_customer_pays" />
+        android:layout_height="match_parent"
+        tools:listitem="@layout/item_late_pay"/>
 
     <TextView
         android:visibility="gone"
@@ -37,7 +30,6 @@
         android:layout_width="64dp"
         android:layout_height="64dp"
         android:layout_margin="16dp"
-        android:padding="8dp"
         android:src="@drawable/sms_svgrepo_com"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />

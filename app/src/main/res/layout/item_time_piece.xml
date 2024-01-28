@@ -35,7 +35,7 @@
             app:layout_constraintTop_toBottomOf="@id/txt_muddat" />
 
         <TextView
-            android:id="@+id/txt_tolandi"
+            android:id="@+id/temp_start_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -71,8 +71,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Kutilmoqda"
-            app:layout_constraintBottom_toBottomOf="@id/txt_tolandi"
+            app:layout_constraintBottom_toBottomOf="@id/temp_start_date"
             app:layout_constraintRight_toRightOf="@id/muddat"
-            app:layout_constraintTop_toTopOf="@id/txt_tolandi" />
+            app:layout_constraintTop_toTopOf="@id/temp_start_date" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

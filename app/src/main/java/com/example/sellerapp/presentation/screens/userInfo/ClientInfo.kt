@@ -32,44 +32,42 @@ class ClientInfo : Fragment(R.layout.screen_info) {
         viewModel.getUserById(userId)
         binding.recycler.layoutManager = LinearLayoutManager(requireContext())
         viewModel.userLD.observe(viewLifecycleOwner) {
-            viewModel.getProductById(it.productId)
-            binding.firstname.text = it.firstName
-            binding.lastname.text = it.secondName
-            binding.paymentMonth.text = it.advance_payment
-            viewModel.productLD.observe(viewLifecycleOwner) { itp ->
-                binding.productName.text = itp.productName
-                binding.productPrice.text = itp.priceProduct.toString()
-                val tulanganSumma = (itp.priceProduct - it.advance_payment.toInt()) - it.checkPay
-                val summa =
-                    (itp.priceProduct - it.advance_payment.toInt()) / it.monthOfRent.toLong()
-                var size = tulanganSumma / it.checkPay
-                binding.paidMonths.text = size.toString()
-                var i = 0
-                var limit = it.monthOfRent.toInt()
-                val items = ArrayList<ClientInfoData>()
-                var startDate = getDate(it.startDate, "dd/MM/yyyy")
-                while (limit > 0) {
-                    items.add(
-                        ClientInfoData(
-                            summa = summa,
-                            tulangan = if (size > 0) 1 else 0,
-                            muddat = startDate
-                        )
-                    )
-                    i++
-                    limit--
-                    size--
-                    startDate = nextDate(startDate, "dd/MM/yyyy")
-                }
-                adapter = ClientInfoAdapter(items)
-            }
+//            viewModel.getProductById(it.productId)
+//            binding.firstname.text = it.firstName
+//            binding.lastname.text = it.secondName
+//            binding.paymentMonth.text = it.advance_payment
+//            viewModel.productLD.observe(viewLifecycleOwner) { itp ->
+//                binding.productName.text = itp.productName
+//                binding.productPrice.text = itp.priceProduct.toString()
+//                val tulanganSumma = (itp.priceProduct - it.advance_payment.toInt()) - it.checkPay
+//                val summa =
+//                    (itp.priceProduct - it.advance_payment.toInt()) / it.monthOfRent.toLong()
+//                var size = tulanganSumma / it.checkPay
+//                binding.paidMonths.text = size.toString()
+//                var i = 0
+//                var limit = it.monthOfRent.toInt()
+//                val items = ArrayList<ClientInfoData>()
+//                var startDate = getDate(it.startDate, "dd/MM/yyyy")
+//                while (limit > 0) {
+//                    items.add(
+//                        ClientInfoData(
+//                            summa = summa,
+//                            tulangan = if (size > 0) 1 else 0,
+//                            muddat = startDate
+//                        )
+//                    )
+//                    i++
+//                    limit--
+//                    size--
+//                    startDate = nextDate(startDate, "dd/MM/yyyy")
+//                }
+//                adapter = ClientInfoAdapter(items)
+//            }
         }
     }
     @SuppressLint("SimpleDateFormat")
     fun getDate(milliSeconds: Long, dateFormat: String): String {
         val formatter = SimpleDateFormat(dateFormat)
-
-
         val calendar = Calendar.getInstance().apply {
             timeInMillis = milliSeconds
         }

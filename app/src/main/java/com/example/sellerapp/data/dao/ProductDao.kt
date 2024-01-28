@@ -7,6 +7,7 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
 import com.example.sellerapp.data.model.ProductData
+import com.example.sellerapp.data.model.UserData
 
 @Dao
 interface ProductDao {
@@ -18,6 +19,9 @@ interface ProductDao {
     @Query("SELECT * FROM product_table WHERE id = :id")
     fun getProductById(id:Long) : ProductData
 
+    @Query("SELECT * FROM product_table WHERE id = :userId")
+    fun getProductByUserId(userId:Long) : List<ProductData>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertProduct(data : ProductData)
 
@@ -25,4 +29,9 @@ interface ProductDao {
     fun updateProduct(data: ProductData)
     @Delete
     fun deleteProduct(data: ProductData)
+    @Query("SELECT * FROM product_table WHERE start_date = :currentDate")
+    fun getTodayPayUsers(currentDate: Long) : List<ProductData>
+
+    @Query("SELECT * FROM product_table WHERE start_date + month_of_rent > :currentDate")
+    fun getLatePayUsers(currentDate: Long): List<ProductData>
 }

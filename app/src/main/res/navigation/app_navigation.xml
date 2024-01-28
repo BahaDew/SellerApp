@@ -47,12 +47,6 @@
         <action
             android:id="@+id/action_addClientScreen_to_homePage"
             app:destination="@id/homePage" />
-        <argument
-            android:name="UserData"
-            app:argType="com.example.sellerapp.data.model.UserData" />
-        <argument
-            android:name="userdata"
-            app:argType="com.example.sellerapp.data.model.UserData" />
     </fragment>
     <fragment
         android:id="@+id/clientInfo"

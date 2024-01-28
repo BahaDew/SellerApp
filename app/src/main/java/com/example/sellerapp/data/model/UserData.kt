@@ -13,10 +13,5 @@ data class UserData(
     @ColumnInfo("first_name") val firstName: String,
     @ColumnInfo("last_name") val secondName: String,
     @ColumnInfo("phone_number") val phoneNumber: String,
-    @ColumnInfo("product_id") val productId: Long,
-    @ColumnInfo("advance_payment") val advance_payment: String,
-    @ColumnInfo("month_of_rent") val monthOfRent: String,
-    @ColumnInfo("start_date") val startDate : Long,
-    @ColumnInfo("comment") val comment: String,
-    @ColumnInfo("check_pay") val checkPay: Long
+    @ColumnInfo("age") val age: Int
 ) : Parcelable

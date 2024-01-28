@@ -1,0 +1,49 @@
+package com.example.sellerapp.presentation.adapters
+
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.DiffUtil.DiffResult
+import androidx.recyclerview.widget.ListAdapter
+import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import com.example.sellerapp.data.model.ProductData
+import com.example.sellerapp.databinding.ItemAddClientBinding
+import com.example.sellerapp.databinding.ItemProductBinding
+
+class ProductListAdapter : ListAdapter<ProductData, ProductListAdapter.MyHolder>(difUtil) {
+
+    inner class MyHolder(private val binding: ItemProductBinding) : ViewHolder(binding.root) {
+        fun bind() {
+            val item = getItem(absoluteAdapterPosition)
+            binding.productName.text = item.productName
+            binding.priceProduct.text = item.priceProduct.toString()
+            binding.monthOfRent.text = item.monthOfRent
+            binding.checkPay.text = item.checkPay.toString()
+            binding.comment.text = item.comment
+            binding.advancePayment.text = item.advance_payment
+        }
+    }
+
+    object difUtil : DiffUtil.ItemCallback<ProductData>() {
+        override fun areItemsTheSame(oldItem: ProductData, newItem: ProductData): Boolean {
+            return oldItem.id == newItem.id
+        }
+
+        override fun areContentsTheSame(oldItem: ProductData, newItem: ProductData): Boolean {
+            return false
+        }
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyHolder {
+        return MyHolder(
+            ItemProductBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent, false
+            )
+        )
+    }
+
+    override fun onBindViewHolder(holder: MyHolder, position: Int) {
+        holder.bind()
+    }
+}

@@ -6,7 +6,6 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
-import com.example.sellerapp.data.model.ProductData
 import com.example.sellerapp.data.model.UserData
 
 @Dao
@@ -16,19 +15,18 @@ interface UserDao {
     fun getAllUsers() : List<UserData>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertUser(data: UserData)
+    fun insertUser(data: UserData) : Long
 
     @Update
     fun updateUser(data: UserData)
 
     @Delete
     fun deleteUser(data: UserData)
+
     @Query("SELECT * FROM user_table WHERE id = :id")
     fun getUserById(id: Long): UserData
 
-    @Query("SELECT * FROM user_table WHERE product_id = :id LIMIT 1")
-    fun getProductById(id : Long) : UserData
+//    @Query("SELECT * FROM user_table WHERE product_id = :id LIMIT 1")
+//    fun getProductById(id : Long) : UserData
 
-    @Query("SELECT * FROM user_table WHERE product_id = :produc_id AND start_date = :time")
-    fun getLatePayUsers(produc_id:Long, time : Long)
 }
