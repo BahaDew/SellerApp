@@ -55,10 +55,6 @@
             app:argType="com.example.sellerapp.data.model.UserData" />
     </fragment>
     <fragment
-        android:id="@+id/payTodayClientsPage"
-        android:name="com.example.sellerapp.presentation.screens.main.pages.secondPage.PayTodayClientsPage"
-        android:label="PayTodayClientsPage" />
-    <fragment
         android:id="@+id/clientInfo"
         android:name="com.example.sellerapp.presentation.screens.userInfo.ClientInfo"
         android:label="ClientInfo"

@@ -6,9 +6,4 @@ import com.example.sellerapp.presentation.screens.splash.SplashScreen
 import com.example.sellerapp.utils.addScreen
 import com.example.sellerapp.utils.extensions.extentions.addFragment
 
-class MainActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-    }
-}
+class MainActivity : AppCompatActivity(R.layout.activity_main)

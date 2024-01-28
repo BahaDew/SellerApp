@@ -13,7 +13,6 @@ class PayTodayClientsPage : Fragment(R.layout.page_second) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         binding.placeholder.visibility = View.VISIBLE
     }
 }

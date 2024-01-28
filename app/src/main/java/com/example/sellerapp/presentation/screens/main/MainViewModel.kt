@@ -1,4 +1,4 @@
 package com.example.sellerapp.presentation.screens.main
 
-class MainViewModel : MainContract.ViewModel {
+class MainViewModel {
 }
