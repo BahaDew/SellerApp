@@ -56,5 +56,17 @@
         <action
             android:id="@+id/action_clientInfo_to_homePage"
             app:destination="@id/homePage" />
+        <action
+            android:id="@+id/action_clientInfo_to_addProductView"
+            app:destination="@id/addProductView" />
+    </fragment>
+    <fragment
+        android:id="@+id/addProductView"
+        android:name="com.example.sellerapp.presentation.screens.add_product.AddProductView"
+        android:label="AddProductView"
+        tools:layout="@layout/add_product">
+        <action
+            android:id="@+id/action_addProductView_to_clientInfo"
+            app:destination="@id/clientInfo" />
     </fragment>
 </navigation>

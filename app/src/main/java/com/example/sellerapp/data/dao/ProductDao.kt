@@ -32,6 +32,6 @@ interface ProductDao {
     @Query("SELECT * FROM product_table WHERE start_date = :currentDate")
     fun getTodayPayUsers(currentDate: Long) : List<ProductData>
 
-    @Query("SELECT * FROM product_table WHERE start_date + month_of_rent > :currentDate")
+    @Query("SELECT * FROM product_table WHERE start_date > :currentDate")
     fun getLatePayUsers(currentDate: Long): List<ProductData>
 }

@@ -15,8 +15,8 @@ class ClientInfoModel {
         return repo.getUserById(id)
     }
 
-    fun getProduct(id: Long): ProductData {
-        return repo.getProductById(id)
+    fun getProduct(userId: Long): List<ProductData> {
+        return repo.getProductByUserId(userId)
     }
 
 }

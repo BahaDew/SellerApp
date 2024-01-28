@@ -7,7 +7,7 @@ import com.example.sellerapp.data.model.UserData
 class ClientInfoViewModel {
     private val model = ClientInfoModel()
     val userLD = MutableLiveData<UserData>()
-    val productLD = MutableLiveData<ProductData>()
+    val productLD = MutableLiveData<List<ProductData>>()
     fun getUserById(id: Long) {
         userLD.value = model.getUserById(id)
     }

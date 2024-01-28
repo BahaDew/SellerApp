@@ -1,5 +1,6 @@
 package com.example.sellerapp.presentation.adapters
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -9,6 +10,8 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.sellerapp.data.model.ProductData
 import com.example.sellerapp.databinding.ItemAddClientBinding
 import com.example.sellerapp.databinding.ItemProductBinding
+import java.text.SimpleDateFormat
+import java.util.Calendar
 
 class ProductListAdapter : ListAdapter<ProductData, ProductListAdapter.MyHolder>(difUtil) {
 
@@ -21,6 +24,7 @@ class ProductListAdapter : ListAdapter<ProductData, ProductListAdapter.MyHolder>
             binding.checkPay.text = item.checkPay.toString()
             binding.comment.text = item.comment
             binding.advancePayment.text = item.advance_payment
+            binding.startDate.text = getDate(item.startDate, "dd.MM.yyyy")
         }
     }
 
@@ -45,5 +49,13 @@ class ProductListAdapter : ListAdapter<ProductData, ProductListAdapter.MyHolder>
 
     override fun onBindViewHolder(holder: MyHolder, position: Int) {
         holder.bind()
+    }
+    @SuppressLint("SimpleDateFormat")
+    private fun getDate(milliSeconds: Long, dateFormat: String): String {
+        val formatter = SimpleDateFormat(dateFormat)
+        val calendar = Calendar.getInstance().apply {
+            timeInMillis = milliSeconds
+        }
+        return formatter.format(calendar.time)
     }
 }

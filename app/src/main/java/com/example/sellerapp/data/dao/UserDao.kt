@@ -23,7 +23,7 @@ interface UserDao {
     @Delete
     fun deleteUser(data: UserData)
 
-    @Query("SELECT * FROM user_table WHERE id = :id")
+    @Query("SELECT * FROM user_table WHERE id = :id LIMIT 1")
     fun getUserById(id: Long): UserData
 
 //    @Query("SELECT * FROM user_table WHERE product_id = :id LIMIT 1")
