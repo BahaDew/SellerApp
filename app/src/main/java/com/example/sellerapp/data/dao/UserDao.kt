@@ -15,22 +15,18 @@ interface UserDao {
     fun getAllUsers() : List<UserData>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertUser(data: UserData)
+    fun insertUser(data: UserData) : Long
 
     @Update
     fun updateUser(data: UserData)
 
     @Delete
     fun deleteUser(data: UserData)
+
     @Query("SELECT * FROM user_table WHERE id = :id")
     fun getUserById(id: Long): UserData
 
-    @Query("SELECT * FROM user_table WHERE product_id = :id LIMIT 1")
-    fun getProductById(id : Long) : UserData
+//    @Query("SELECT * FROM user_table WHERE product_id = :id LIMIT 1")
+//    fun getProductById(id : Long) : UserData
 
-    @Query("SELECT * FROM user_table WHERE start_date = :currentDate")
-    fun getTodayPayUsers(currentDate: Long) : List<UserData>
-
-    @Query("SELECT * FROM user_table WHERE start_date > :currentDate")
-    fun getLatePayUsers(currentDate: Long): List<UserData>
 }

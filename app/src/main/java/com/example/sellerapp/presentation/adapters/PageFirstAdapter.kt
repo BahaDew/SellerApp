@@ -28,10 +28,6 @@ class PageFirstAdapter: ListAdapter<UserData, PageFirstAdapter.ClientViewHolder>
     }
 
     inner class ClientViewHolder(private var binding: ItemAddClientBinding) : ViewHolder(binding.root) {
-        private val firstname = binding.firstname
-        private val date = binding.date
-        private val lastname = binding.lastname
-        private val number = binding.number
         var time = System.currentTimeMillis()
 
         init {
@@ -44,14 +40,18 @@ class PageFirstAdapter: ListAdapter<UserData, PageFirstAdapter.ClientViewHolder>
             }
         }
 
+        @SuppressLint("SetTextI18n")
         fun bind() {
-            firstname.text = currentList[absoluteAdapterPosition].firstName
-            lastname.text = currentList[absoluteAdapterPosition].secondName
-            number.text = currentList[absoluteAdapterPosition].phoneNumber
-            val c: Calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"))
-            c.add(Calendar.MONTH, +1)
-            val result = c.timeInMillis
-            date.text = getDate(result, "dd/MM/yyyy")
+            val item = getItem(absoluteAdapterPosition)
+            binding.fullName.text = "${item.firstName} ${item.secondName}"
+            binding.number.text = item.phoneNumber
+
+//            number.text = currentList[absoluteAdapterPosition].phoneNumber
+//            val c: Calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"))
+//            c.add(Calendar.MONTH, +1)
+//            val result = c.timeInMillis
+//
+//            date.text = getDate(result, "dd/MM/yyyy")
         }
     }
 

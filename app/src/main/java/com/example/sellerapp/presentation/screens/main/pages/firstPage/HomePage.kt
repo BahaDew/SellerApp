@@ -64,8 +64,8 @@ class HomePage : Fragment(R.layout.page_first) {
 
         dialog.findViewById<ImageView>(R.id.edit).setOnClickListener{
             val bundle = Bundle()
-            bundle.putLong("userId", user.id)
-            navController.navigate(R.id.edit, bundle)
+//            bundle.putLong("userId", user.id)
+//            navController.navigate(R.id.edit, bundle)
             dialog.dismiss()
         }
 

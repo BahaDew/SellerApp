@@ -13,15 +13,14 @@
         android:id="@+id/constraint"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="5dp"
-        >
+        android:layout_marginHorizontal="5dp">
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guid"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.4" />
+            app:layout_constraintGuide_percent="0.40052357" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/first_name"
@@ -33,6 +32,7 @@
             app:layout_constraintLeft_toLeftOf="@id/constraint"
             app:layout_constraintTop_toTopOf="@id/constraint"
             app:layout_constraintVertical_chainStyle="packed"
+            android:layout_marginVertical="5dp"
             tools:text="Axmadaliyev" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -41,13 +41,13 @@
             android:layout_height="wrap_content"
             android:padding="5dp"
             android:textSize="16sp"
-            app:layout_constraintBottom_toTopOf="@id/product_name"
+            app:layout_constraintBottom_toTopOf="@id/temp_product_name"
             app:layout_constraintLeft_toLeftOf="@id/first_name"
             app:layout_constraintTop_toBottomOf="@id/first_name"
             tools:text="Ulug'bek" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/product_name"
+            android:id="@+id/temp_product_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20sp"
@@ -57,6 +57,7 @@
             app:layout_constraintRight_toRightOf="@id/guid"
             app:layout_constraintTop_toBottomOf="@id/second_name"
             app:layout_constraintVertical_chainStyle="packed"
+            android:layout_marginStart="5dp"
             tools:text="Samsung S10 5G" />
 
         <androidx.appcompat.widget.AppCompatImageButton
@@ -80,24 +81,23 @@
             app:layout_constraintRight_toRightOf="@id/constraint"
             app:layout_constraintTop_toBottomOf="@id/add_comment"
             android:textStyle="italic"
-            tools:text="100_000 so'm" />
+            tools:text="100 000 so'm" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/comment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
+            android:layout_marginHorizontal="5dp"
             app:layout_constraintBottom_toBottomOf="@id/constraint"
             app:layout_constraintLeft_toLeftOf="@id/constraint"
             app:layout_constraintRight_toRightOf="@id/constraint"
-            app:layout_constraintTop_toBottomOf="@id/money_late"
+            app:layout_constraintTop_toBottomOf="@id/temp_product_name"
             android:textColor="#FF0000"
             android:background="@drawable/bg_late"
             android:textSize="14sp"
             android:padding="7dp"
-            tools:text="dfklgdfklgkdfgkdg;d;lkgd\ndsfsdfsdfsdfsdf\ndsfsdfsdfsdfsdf\nddddd\ndfsdf"
+            tools:text="Bu mijozimiz bugun kechka to'lashini aytdi"
+            android:layout_marginVertical="10dp"
             tools:ignore="NotSibling" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </androidx.cardview.widget.CardView>
