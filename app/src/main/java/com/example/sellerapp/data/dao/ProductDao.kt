@@ -23,8 +23,6 @@ interface ProductDao {
 
     @Update
     fun updateProduct(data: ProductData)
-
-
     @Delete
     fun deleteProduct(data: ProductData)
 }

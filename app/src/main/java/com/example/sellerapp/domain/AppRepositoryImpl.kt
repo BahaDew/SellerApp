@@ -35,6 +35,9 @@ class AppRepositoryImpl : AppRepository {
 
     override fun updateUser(data: UserData) = db.getUserDao().updateUser(data)
     override fun getUserById(id: Long) = db.getUserDao().getUserById(id)
+    override fun getPayTodayUsers(long: Long): List<UserData> = db.getUserDao().getTodayPayUsers(long)
+
+    override fun getPayLateUsers(long: Long): List<UserData> = db.getUserDao().getLatePayUsers(long)
 
     override fun deleteUser(data: UserData) = db.getUserDao().deleteUser(data)
 
