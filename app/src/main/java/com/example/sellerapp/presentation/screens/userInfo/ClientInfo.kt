@@ -3,31 +3,30 @@ import java.text.SimpleDateFormat
 import java.util.*
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.sellerapp.R
-import com.example.sellerapp.data.model.ClientInfoData
 import com.example.sellerapp.databinding.ScreenInfoBinding
-import com.example.sellerapp.presentation.adapters.ClientInfoAdapter
 import com.example.sellerapp.presentation.adapters.ProductListAdapter
 import java.util.Calendar
 import java.util.Locale
 
 class ClientInfo : Fragment(R.layout.screen_info) {
     private val binding by viewBinding(ScreenInfoBinding::bind)
-
     private var userId: Long = 0
     private val adapter = ProductListAdapter()
-    val viewModel = ClientInfoViewModel()
+    private val viewModel = ClientInfoViewModel()
+    private val navController by lazy { findNavController() }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         userId = requireArguments().getLong("userId", 0)
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getUserById(userId)
@@ -35,22 +34,28 @@ class ClientInfo : Fragment(R.layout.screen_info) {
         viewModel.userLD.observe(viewLifecycleOwner) {
             binding.firstName.text = it.firstName
             binding.lastname.text = it.secondName
-            binding.age.text = it.age.toString()
+            binding.age.text = "${it.age} yosh"
             binding.phoneNumber.text = it.phoneNumber
         }
         viewModel.productLD.observe(viewLifecycleOwner) {
+            Log.d("TTT", it.joinToString())
             adapter.submitList(it)
         }
-        binding.imgUser.setOnClickListener {
-            findNavController().navigateUp()
+        binding.imageView.setOnClickListener {
+            navController.navigateUp()
         }
         binding.btnAdd.setOnClickListener {
             val bundle = Bundle()
             bundle.putLong("userId", userId)
-            findNavController().navigate(R.id.addProductView, bundle)
+            navController.navigate(R.id.addProductView, bundle)
         }
         binding.recycler.adapter = adapter
         binding.recycler.layoutManager = LinearLayoutManager(requireContext())
+        adapter.setOnClickListener {
+            val bundle = Bundle()
+            bundle.putLong("productId", it.id)
+            navController.navigate(R.id.payMonthView, bundle)
+        }
     }
     @SuppressLint("SimpleDateFormat")
     fun getDate(milliSeconds: Long, dateFormat: String): String {

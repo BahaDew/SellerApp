@@ -10,9 +10,10 @@ import com.example.sellerapp.data.model.ProductData
 import com.example.sellerapp.databinding.AddProductBinding
 
 class AddProductView : Fragment(R.layout.add_product) {
-    private var userId : Long = 0
-    private val binding : AddProductBinding by viewBinding(AddProductBinding::bind)
+    private var userId: Long = 0
+    private val binding: AddProductBinding by viewBinding(AddProductBinding::bind)
     private val viewModel = AddProductViewModel()
+    private val navController by lazy { findNavController() }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         userId = requireArguments().getLong("userId")
@@ -34,7 +35,10 @@ class AddProductView : Fragment(R.layout.add_product) {
                     startDate = System.currentTimeMillis()
                 )
             )
-            findNavController().popBackStack()
+            navController.popBackStack()
+        }
+        binding.imageView.setOnClickListener {
+            navController.popBackStack()
         }
     }
 }

@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#FFF">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBar"
@@ -15,18 +16,18 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="34dp"
-        android:layout_height="34dp"
-        android:padding="6dp"
-        android:background="?selectableItemBackgroundBorderless"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="12dp"
+        android:background="?android:selectableItemBackground"
         android:clickable="true"
-        android:layout_marginStart="16dp"
+        android:focusable="true"
+        android:padding="10dp"
         android:src="@drawable/ic_back"
         app:layout_constraintBottom_toBottomOf="@id/appBar"
         app:layout_constraintStart_toStartOf="@id/appBar"
         app:layout_constraintTop_toTopOf="@id/appBar"
-        app:tint="@color/white"
-        android:focusable="true" />
+        app:tint="@color/white" />
 
 
 <!--    <EditText-->
@@ -136,6 +137,7 @@
             android:layout_height="match_parent"
             android:fontFamily="@font/nunito"
             android:hint="Phone number"
+            android:inputType="phone"
             app:mask="+### ## ### ## ##" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -256,7 +258,7 @@
         android:id="@+id/appBarText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add Client Data"
+        android:text="Add Client"
         android:textSize="22sp"
         android:textColor="@color/white"
         android:fontFamily="@font/nunito_regular"

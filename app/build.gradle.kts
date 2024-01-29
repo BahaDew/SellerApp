@@ -62,8 +62,9 @@ dependencies {
     annotationProcessor("androidx.room:room-compiler:$room_version")
 
     // MASKED EDIT TEXT
-    implementation("io.github.vicmikhailau:MaskedEditText:5.0.1")
+//    implementation("io.github.vicmikhailau:MaskedEditText:5.0.1")
 
+    //noinspection KaptUsageInsteadOfKsp
     kapt("androidx.room:room-compiler:$room_version")
 
     val nav_version = "2.7.6"

@@ -14,8 +14,13 @@ import java.text.SimpleDateFormat
 import java.util.Calendar
 
 class ProductListAdapter : ListAdapter<ProductData, ProductListAdapter.MyHolder>(difUtil) {
-
+    private var onClickListener : ((ProductData) -> Unit) = {}
     inner class MyHolder(private val binding: ItemProductBinding) : ViewHolder(binding.root) {
+        init {
+            binding.item.setOnClickListener {
+                onClickListener.invoke(getItem(absoluteAdapterPosition))
+            }
+        }
         fun bind() {
             val item = getItem(absoluteAdapterPosition)
             binding.productName.text = item.productName
@@ -57,5 +62,8 @@ class ProductListAdapter : ListAdapter<ProductData, ProductListAdapter.MyHolder>
             timeInMillis = milliSeconds
         }
         return formatter.format(calendar.time)
+    }
+    fun setOnClickListener(onClickListener : (ProductData) -> Unit) {
+        this.onClickListener = onClickListener
     }
 }

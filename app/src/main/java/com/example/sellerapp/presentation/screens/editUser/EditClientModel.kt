@@ -11,7 +11,7 @@ class EditClientModel {
     fun editClient(userData: UserData) {
         repository.updateUser(userData)
     }
-    fun addClient(userData: UserData) {
-        repository.addUser(userData)
+    fun getUserById(id : Long) : UserData {
+        return repository.getUserById(id)
     }
 }

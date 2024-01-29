@@ -18,5 +18,4 @@ class ClientInfoModel {
     fun getProduct(userId: Long): List<ProductData> {
         return repo.getProductByUserId(userId)
     }
-
 }

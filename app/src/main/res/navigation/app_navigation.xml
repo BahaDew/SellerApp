@@ -38,10 +38,13 @@
         <action
             android:id="@+id/action_homePage_to_clientInfo2"
             app:destination="@id/clientInfo" />
+        <action
+            android:id="@+id/action_homePage_to_editClientScreen"
+            app:destination="@id/editClientScreen" />
     </fragment>
     <fragment
         android:id="@+id/addClientScreen"
-        tools:layout="@layout/dialog_add_client"
+        tools:layout="@layout/screen_add_client"
         android:name="com.example.sellerapp.presentation.screens.addUser.AddClientScreen"
         android:label="AddClientScreen" >
         <action
@@ -59,6 +62,9 @@
         <action
             android:id="@+id/action_clientInfo_to_addProductView"
             app:destination="@id/addProductView" />
+        <action
+            android:id="@+id/action_clientInfo_to_payMonthView"
+            app:destination="@id/payMonthView" />
     </fragment>
     <fragment
         android:id="@+id/addProductView"
@@ -68,5 +74,23 @@
         <action
             android:id="@+id/action_addProductView_to_clientInfo"
             app:destination="@id/clientInfo" />
+    </fragment>
+    <fragment
+        android:id="@+id/payMonthView"
+        android:name="com.example.sellerapp.presentation.screens.pay_month.PayMonthView"
+        android:label="PayMonthView"
+        tools:layout="@layout/screen_pay_month">
+        <action
+            android:id="@+id/action_payMonthView_to_clientInfo"
+            app:destination="@id/clientInfo" />
+    </fragment>
+    <fragment
+        android:id="@+id/editClientScreen"
+        android:name="com.example.sellerapp.presentation.screens.editUser.EditClientScreen"
+        android:label="EditClientScreen"
+        tools:layout="@layout/screen_edit_client">
+        <action
+            android:id="@+id/action_editClientScreen_to_homePage"
+            app:destination="@id/homePage" />
     </fragment>
 </navigation>
