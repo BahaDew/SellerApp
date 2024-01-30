@@ -1,4 +1,4 @@
-package com.example.sellerapp.presentation.screens.userInfo
+package com.example.sellerapp.presentation.screens.client_Info
 
 import com.example.sellerapp.data.model.ProductData
 import com.example.sellerapp.data.model.UserData
@@ -11,7 +11,11 @@ class ClientInfoModel {
         return repo.getUserById(id)
     }
 
-    fun getProduct(userId: Long): List<ProductData> {
+    fun getProductsByUser(userId: Long): List<ProductData> {
         return repo.getProductByUserId(userId)
+    }
+
+    fun deleteProduct(productData: ProductData) {
+        repo.deleteProduct(productData)
     }
 }

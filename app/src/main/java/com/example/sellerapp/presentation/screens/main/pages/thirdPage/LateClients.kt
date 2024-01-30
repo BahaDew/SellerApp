@@ -91,7 +91,7 @@ class LateClients : Fragment(R.layout.page_third) {
                 var startDate = getData(product.startDate)
                 val monthOfRent = product.monthOfRent
                 var checkPay = product.checkPay
-                val summa = (product.priceProduct - product.advance_payment) / monthOfRent
+                val summa = (product.priceProduct - product.advancePayment) / monthOfRent
                 for (i in 1..monthOfRent) {
                     if (checkPay.roundToLong() < summa.roundToLong() && convertDateMillisecond(startDate) < currentData) {
                         list.add(

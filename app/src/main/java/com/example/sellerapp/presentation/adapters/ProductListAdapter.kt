@@ -15,10 +15,15 @@ import java.util.Locale
 
 class ProductListAdapter : ListAdapter<ProductData, ProductListAdapter.MyHolder>(MyDifUtil) {
     private var onClickListener : ((ProductData) -> Unit) = {}
+    private var longClickListener : ((ProductData) -> Unit) = {}
     inner class MyHolder(private val binding: ItemProductBinding) : ViewHolder(binding.root) {
         init {
             binding.item.setOnClickListener {
                 onClickListener.invoke(getItem(absoluteAdapterPosition))
+            }
+            binding.item.setOnLongClickListener {
+                longClickListener.invoke(getItem(absoluteAdapterPosition))
+                return@setOnLongClickListener true
             }
         }
         @SuppressLint("SetTextI18n")
@@ -29,7 +34,7 @@ class ProductListAdapter : ListAdapter<ProductData, ProductListAdapter.MyHolder>
             binding.monthOfRent.text = item.monthOfRent.toString()
             binding.checkPay.text = formatterAmount(item.checkPay) + " so'm"
             binding.comment.text = item.comment
-            binding.advancePayment.text = formatterAmount(item.advance_payment) + " so'm"
+            binding.advancePayment.text = formatterAmount(item.advancePayment) + " so'm"
             binding.startDate.text = getDate(item.startDate, "dd.MM.yyyy")
         }
     }
@@ -72,5 +77,8 @@ class ProductListAdapter : ListAdapter<ProductData, ProductListAdapter.MyHolder>
     fun formatterAmount(amount: Double) : String{
         val formatter = NumberFormat.getInstance(Locale.getDefault())
         return formatter.format(amount)
+    }
+    fun setLongClickListener(longClickListener : (ProductData) -> Unit) {
+        this.longClickListener = longClickListener
     }
 }

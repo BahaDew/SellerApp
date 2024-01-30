@@ -51,7 +51,7 @@ class HomePage : Fragment(R.layout.page_first) {
     }
 
     private fun showBottomSheetDialog(user: UserData) {
-        dialog.setContentView(R.layout.dialog_edit_user)
+        dialog.setContentView(R.layout.dialog_choose_edit_delete)
         dialog.findViewById<View>(R.id.btn_delete).setOnClickListener {
             viewModel.deleteUser(user)
             dialog.dismiss()
@@ -63,7 +63,6 @@ class HomePage : Fragment(R.layout.page_first) {
             navController.navigate(R.id.editClientScreen, bundle)
             dialog.dismiss()
         }
-
         dialog.show()
         dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog.window?.setLayout(

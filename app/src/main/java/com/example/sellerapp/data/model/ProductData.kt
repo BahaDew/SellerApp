@@ -14,5 +14,5 @@ data class ProductData(
     @ColumnInfo("start_date") val startDate : Long,
     @ColumnInfo("comment") val comment: String,
     @ColumnInfo("check_pay") val checkPay: Double,
-    @ColumnInfo("advance_payment") val advance_payment: Double,
+    @ColumnInfo("advance_payment") val advancePayment: Double,
 )

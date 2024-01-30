@@ -1,4 +1,4 @@
-package com.example.sellerapp.presentation.screens.editUser
+package com.example.sellerapp.presentation.screens.edit_user
 
 import androidx.lifecycle.MutableLiveData
 import com.example.sellerapp.data.model.UserData

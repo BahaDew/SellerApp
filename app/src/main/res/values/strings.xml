@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">SellerApp</string>
-    <string name="checked_tulov">To\'landi</string>
-    <string name="unchecked_tulov">Kutilmoqda</string>
-    <string name="not_tulov">Muddatidan o\'tib ketgan</string>
+    <string name="paid">Paid</string>
+    <string name="un_paid">Unpaid</string>
+    <string name="not_paid">Not paid on time</string>
 </resources>

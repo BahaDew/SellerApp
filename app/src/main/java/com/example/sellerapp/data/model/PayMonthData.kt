@@ -2,6 +2,6 @@ package com.example.sellerapp.data.model
 
 data class PayMonthData(
     val summa : Double,
-    var payed : Int,
+    var paid : Int,
     val deadLine : String
 )

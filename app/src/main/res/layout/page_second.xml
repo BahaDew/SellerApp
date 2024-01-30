@@ -20,7 +20,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/undraw_business_deal"
+        android:src="@drawable/illustration_undraw_business_deal"
         android:layout_marginHorizontal="20dp"
         app:layout_constraintDimensionRatio="1:1"
         android:contentDescription="@string/app_name"/>
@@ -30,7 +30,7 @@
         android:layout_width="64dp"
         android:layout_height="64dp"
         android:layout_margin="16dp"
-        android:src="@drawable/sms_svgrepo_com"
+        android:src="@drawable/ic_sms_svgrepo_com"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

@@ -1,4 +1,4 @@
-package com.example.sellerapp.presentation.screens.add_product
+package com.example.sellerapp.presentation.screens.edit_product
 
 import android.os.Bundle
 import android.view.View
@@ -7,32 +7,41 @@ import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.sellerapp.R
 import com.example.sellerapp.data.model.ProductData
-import com.example.sellerapp.databinding.ScreenAddProductBinding
+import com.example.sellerapp.databinding.ScreenEditProductBinding
+import java.text.NumberFormat
 
-class AddProductView : Fragment(R.layout.screen_add_product) {
-    private var userId: Long = 0
-    private val binding: ScreenAddProductBinding by viewBinding(ScreenAddProductBinding::bind)
-    private val viewModel = AddProductViewModel()
+class EditProductView : Fragment(R.layout.screen_edit_product) {
+    private var productId: Long = 0
+    private val binding: ScreenEditProductBinding by viewBinding(ScreenEditProductBinding::bind)
+    private val viewModel = EditProductViewModel()
     private val navController by lazy { findNavController() }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        userId = requireArguments().getLong("userId")
+        productId = requireArguments().getLong("productId")
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel.getProductById(productId)
+        viewModel.productLD.observe(viewLifecycleOwner) {
+            binding.productName.setText(it.productName)
+            binding.productPrice.setText(it.priceProduct.toString())
+            binding.advancePayment.setText(it.advancePayment.toString())
+            binding.paymentMonth.setText(it.monthOfRent.toString())
+            binding.comment.setText(it.comment)
+        }
         binding.btnSave.setOnClickListener {
             viewModel.onClickSaveButton(
                 ProductData(
-                    id = 0L,
+                    id = productId,
                     productName = binding.productName.text.toString(),
                     priceProduct = binding.productPrice.text.toString().toDouble(),
                     advancePayment = binding.advancePayment.text.toString().toDouble(),
                     monthOfRent = binding.paymentMonth.text.toString().toInt(),
                     comment = binding.comment.text.toString(),
-                    userId = userId,
+                    userId = 0,
                     checkPay = 0.0,
-                    startDate = System.currentTimeMillis()
+                    startDate = 0L
                 )
             )
             navController.popBackStack()
@@ -40,5 +49,8 @@ class AddProductView : Fragment(R.layout.screen_add_product) {
         binding.imageView.setOnClickListener {
             navController.popBackStack()
         }
+    }
+    private fun amountFormat(amount : Double) : String{
+        return NumberFormat.getInstance().format(amount)
     }
 }

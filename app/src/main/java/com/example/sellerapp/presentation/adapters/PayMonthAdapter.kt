@@ -40,20 +40,20 @@ class PayMonthAdapter :
             val data = getItem(absoluteAdapterPosition)
             binding.summa.text = "${formatAmount(data.summa)} so'm"
             binding.muddat.text = data.deadLine
-            when (data.payed) {
+            when (data.paid) {
                 1 -> {
-                    binding.tolandi.setText(R.string.checked_tulov)
-                    binding.item.setBackgroundResource(R.color.checked_tulov)
+                    binding.tolandi.setText(R.string.paid)
+                    binding.item.setBackgroundResource(R.color.paid)
                 }
 
                 0 -> {
-                    binding.tolandi.setText(R.string.unchecked_tulov)
-                    binding.item.setBackgroundResource(R.color.unchecked_tulov)
+                    binding.tolandi.setText(R.string.un_paid)
+                    binding.item.setBackgroundResource(R.color.un_paid)
                 }
 
                 else -> {
-                    binding.tolandi.setText(R.string.not_tulov)
-                    binding.item.setBackgroundResource(R.color.not_tulov)
+                    binding.tolandi.setText(R.string.not_paid)
+                    binding.item.setBackgroundResource(R.color.not_paid)
                 }
             }
         }

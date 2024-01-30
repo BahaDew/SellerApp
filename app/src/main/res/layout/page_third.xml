@@ -22,7 +22,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/undraw_business_deal"
+        android:src="@drawable/illustration_undraw_business_deal"
         android:layout_marginHorizontal="20dp"
         app:layout_constraintDimensionRatio="1:1"
         android:contentDescription="@string/app_name"/>
