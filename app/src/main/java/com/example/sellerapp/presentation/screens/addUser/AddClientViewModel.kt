@@ -11,7 +11,6 @@ class AddClientViewModel{
         transferData.value = model.getAllUsers()
     }
 
-
     fun addClientAndProduct(userData: UserData, productData: ProductData) {
         val userId = model.addClient(userData)
         model.addProduct(productData.copy(userId = userId))

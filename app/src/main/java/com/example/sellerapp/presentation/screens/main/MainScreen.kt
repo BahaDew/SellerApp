@@ -9,7 +9,7 @@ import com.example.sellerapp.databinding.ScreenMainBinding
 import com.example.sellerapp.presentation.adapters.MainAdapter
 import com.google.android.material.tabs.TabLayoutMediator
 
-class MainScreen(): Fragment(R.layout.screen_main) {
+class MainScreen: Fragment(R.layout.screen_main) {
     private val binding by viewBinding(ScreenMainBinding::bind)
     private var adapter : MainAdapter? = null
     private val tabItem = arrayListOf("Home", "Today", "Late")

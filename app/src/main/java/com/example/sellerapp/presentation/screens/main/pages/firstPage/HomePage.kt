@@ -50,13 +50,12 @@ class HomePage : Fragment(R.layout.page_first) {
 
     private fun showBottomSheetDialog(user: UserData) {
         dialog.setContentView(R.layout.dialog_edit_user)
-
-        dialog.findViewById<View>(R.id.btn_delete).setOnClickListener {
+        dialog.findViewById<View>(R.id.btn_unpaid).setOnClickListener {
             viewModel.deleteUser(user)
             dialog.dismiss()
         }
 
-        dialog.findViewById<View>(R.id.btn_edit).setOnClickListener {
+        dialog.findViewById<View>(R.id.btn_paid).setOnClickListener {
             val bundle = Bundle()
             bundle.putLong("userId", user.id)
             navController.navigate(R.id.editClientScreen, bundle)

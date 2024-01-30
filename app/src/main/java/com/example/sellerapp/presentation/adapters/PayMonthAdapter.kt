@@ -9,20 +9,20 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.sellerapp.R
 import com.example.sellerapp.data.model.PayMonthData
 import com.example.sellerapp.databinding.ItemTimePieceBinding
+import java.text.NumberFormat
+import java.util.Locale
 
 class PayMonthAdapter :
     ListAdapter<PayMonthData, PayMonthAdapter.ClientInfoViewHolder>(MyDiffUtil) {
-    private var longClickListener: ((PayMonthData) -> Unit)? = null
+    private var longClickListener: ((PayMonthData, Int) -> Unit)? = null
 
     object MyDiffUtil : DiffUtil.ItemCallback<PayMonthData>() {
         override fun areItemsTheSame(oldItem: PayMonthData, newItem: PayMonthData): Boolean {
-            return oldItem.muddat == newItem.muddat
+            return oldItem.deadLine == newItem.deadLine
         }
 
         override fun areContentsTheSame(oldItem: PayMonthData, newItem: PayMonthData): Boolean {
-            return oldItem.muddat == newItem.muddat
-                    && oldItem.summa == newItem.summa
-                    && oldItem.tulangan == newItem.tulangan
+            return false
         }
     }
 
@@ -30,7 +30,7 @@ class PayMonthAdapter :
         ViewHolder(binding.root) {
         init {
             binding.item.setOnLongClickListener {
-                longClickListener?.invoke(getItem(absoluteAdapterPosition))
+                longClickListener?.invoke(getItem(absoluteAdapterPosition), absoluteAdapterPosition)
                 return@setOnLongClickListener true
             }
         }
@@ -38,9 +38,9 @@ class PayMonthAdapter :
         @SuppressLint("SetTextI18n")
         fun bind() {
             val data = getItem(absoluteAdapterPosition)
-            binding.summa.text = "${formatAmount(data.summa.toString())} so'm"
-            binding.muddat.text = data.muddat
-            when (data.tulangan) {
+            binding.summa.text = "${formatAmount(data.summa)} so'm"
+            binding.muddat.text = data.deadLine
+            when (data.payed) {
                 1 -> {
                     binding.tolandi.setText(R.string.checked_tulov)
                     binding.item.setBackgroundResource(R.color.checked_tulov)
@@ -72,15 +72,11 @@ class PayMonthAdapter :
         holder.bind()
     }
 
-    fun setLongClickListener(longClickListener: ((data: PayMonthData) -> Unit)) {
+    fun setLongClickListener(longClickListener: ((data: PayMonthData, position : Int) -> Unit)) {
         this.longClickListener = longClickListener
     }
-    fun formatAmount(amountString: String): String {
-        val amount = amountString.toLongOrNull()
-        if (amount != null) {
-            val formattedAmount = String.format("%,d", amount)
-            return formattedAmount.replace(",", " ")
-        }
-        return "Invalid amount"
+    fun formatAmount(amount: Double): String {
+        val formatter = NumberFormat.getInstance(Locale.getDefault())
+        return formatter.format(amount)
     }
 }

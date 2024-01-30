@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="16dp"
     android:layout_marginVertical="10dp"
-    app:cardBackgroundColor="#FFB8A2"
+    app:cardBackgroundColor="#FFF06C"
     app:cardCornerRadius="12dp"
     app:cardElevation="10dp">
 
@@ -46,6 +46,7 @@
             android:layout_marginTop="15dp"
             android:text="Product name:"
             android:textSize="16dp"
+            android:textColor="#000"
             app:layout_constraintLeft_toLeftOf="@id/fullName"
             app:layout_constraintTop_toBottomOf="@id/number" />
 
@@ -54,10 +55,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
-            android:layout_marginEnd="20dp"
             android:text="Avtomobile"
             android:textColor="@color/color_app_main"
             android:textSize="16dp"
+            android:layout_marginEnd="20dp"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="@id/temp_product_name" />
 
@@ -67,6 +68,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="Product price:"
+            android:textColor="#000"
             android:textSize="16dp"
             app:layout_constraintLeft_toLeftOf="@id/temp_product_name"
             app:layout_constraintTop_toBottomOf="@id/temp_product_name" />
@@ -88,6 +90,7 @@
             android:layout_marginTop="10dp"
             android:text="Start date:"
             android:textSize="16dp"
+            android:textColor="#000"
             app:layout_constraintLeft_toLeftOf="@id/temp_product_name"
             app:layout_constraintTop_toBottomOf="@id/temp_product_price" />
 
@@ -102,35 +105,16 @@
             app:layout_constraintTop_toTopOf="@id/temp_start_date" />
 
         <TextView
-            android:id="@+id/temp_payment_deadline"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="Deadline:"
-            android:textSize="16dp"
-            app:layout_constraintLeft_toLeftOf="@id/temp_product_name"
-            app:layout_constraintTop_toBottomOf="@id/temp_start_date" />
-
-        <TextView
-            android:id="@+id/payment_deadline"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="10.09.2023"
-            android:textColor="#FF1503"
-            android:textSize="16dp"
-            app:layout_constraintRight_toRightOf="@id/product_name"
-            app:layout_constraintTop_toTopOf="@id/temp_payment_deadline" />
-
-        <TextView
             android:id="@+id/temp_comment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginVertical="10dp"
             android:text="Comment: "
             android:textSize="16dp"
+            android:textColor="#000"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/temp_payment_deadline" />
+            app:layout_constraintTop_toBottomOf="@id/temp_start_date" />
 
         <TextView
             android:id="@+id/comment"
@@ -139,7 +123,7 @@
             android:layout_marginVertical="10dp"
             android:layout_marginEnd="5dp"
             android:text="Mijozni oyligi chiqsa kegin to'laydi"
-            android:textColor="#FF1100"
+            android:textColor="#F44336"
             android:textSize="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="@id/temp_product_name"

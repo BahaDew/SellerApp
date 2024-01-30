@@ -19,5 +19,12 @@ interface AppRepository {
     fun getPayTodayUsers(long: Long): List<UserData>
     fun getPayLateUsers(long: Long): List<UserData>
     fun getProductByUserId(userId: Long): List<ProductData>
-//    fun getUserFromProduct(product_id : Long) : UserData
+    fun getUsersWithProduct() : Map<UserData, List<ProductData>>
+
+    fun putStringPref(key : String, value : String)
+    fun getStringPref(key : String, default : String) : String
+    fun putBooleanPref(key : String, value : Boolean)
+    fun getBooleanPref(key : String, default : Boolean) : Boolean
+    fun putLongPref(key : String, value : Long)
+    fun getLongPref(key : String, default : Long) : Long
 }

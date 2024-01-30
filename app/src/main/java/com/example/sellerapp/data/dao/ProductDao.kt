@@ -7,8 +7,6 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
 import com.example.sellerapp.data.model.ProductData
-import com.example.sellerapp.data.model.UserData
-
 @Dao
 interface ProductDao {
 

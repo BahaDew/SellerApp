@@ -36,11 +36,11 @@ class AddClientScreen : Fragment(R.layout.screen_add_client) {
             val productData = ProductData(
                 productName = binding.productName.text.toString(),
                 id = 0L,
-                priceProduct = binding.productPrice.text.toString().toInt(),
-                advance_payment = binding.advancePayment.text.toString(),
-                monthOfRent =  binding.paymentMonth.text.toString(),
+                priceProduct = binding.productPrice.text.toString().toDouble(),
+                advance_payment = binding.advancePayment.text.toString().toDouble(),
+                monthOfRent =  binding.paymentMonth.text.toString().toInt(),
                 comment = binding.comment.text.toString(),
-                checkPay = 0,
+                checkPay = 0.0,
                 userId = 0L,
                 startDate = System.currentTimeMillis()
             )

@@ -8,7 +8,6 @@ import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.sellerapp.R
 import com.example.sellerapp.data.model.UserData
-import com.example.sellerapp.databinding.ScreenAddClientBinding
 import com.example.sellerapp.databinding.ScreenEditClientBinding
 
 class EditClientScreen : Fragment(R.layout.screen_edit_client) {
