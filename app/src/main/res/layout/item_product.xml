@@ -5,14 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="16dp"
-    android:layout_marginTop="8dp"
+    android:layout_marginVertical="10dp"
     app:cardCornerRadius="16dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/item"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#D3E3FF"
+        android:background="#E4EBF3"
         android:foreground="?android:selectableItemBackground"
         tools:ignore="UnusedAttribute">
 
@@ -21,7 +21,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:text="Product name: "
+            android:text="Product name:"
             android:textSize="18dp"
             app:layout_constraintBottom_toTopOf="@id/temp_price_product"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -32,7 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Product price: "
+            android:text="Product price:"
             android:textSize="18dp"
             app:layout_constraintLeft_toLeftOf="@id/temp_product_name"
             app:layout_constraintTop_toBottomOf="@id/temp_product_name" />
@@ -43,8 +43,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="16dp"
-            android:text="Start date: "
-            android:textSize="18sp"
+            android:text="Start date:"
+            android:textSize="18dp"
             app:layout_constraintLeft_toLeftOf="@id/temp_product_name"
             app:layout_constraintTop_toBottomOf="@id/temp_price_product" />
 
@@ -54,8 +54,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="16dp"
-            android:text="Month of rent: "
-            android:textSize="18sp"
+            android:text="Month of rent:"
+            android:textSize="18dp"
             app:layout_constraintLeft_toLeftOf="@id/temp_start_date"
             app:layout_constraintTop_toBottomOf="@id/temp_start_date" />
 
@@ -65,8 +65,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="16dp"
-            android:text="Advance payment: "
-            android:textSize="18sp"
+            android:text="Advance payment:"
+            android:textSize="18dp"
             app:layout_constraintLeft_toLeftOf="@id/temp_month_of_rent"
             app:layout_constraintTop_toBottomOf="@id/temp_month_of_rent" />
 
@@ -76,8 +76,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="16dp"
-            android:text="Amount paid: "
-            android:textSize="18sp"
+            android:text="Amount paid:"
+            android:textSize="18dp"
             app:layout_constraintLeft_toLeftOf="@id/temp_advance_payment"
             app:layout_constraintTop_toBottomOf="@id/temp_advance_payment" />
 
@@ -85,7 +85,7 @@
             android:id="@+id/temp_comment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="15dp"
             android:layout_marginBottom="16dp"
             android:text="Comment:"
             android:textSize="18dp"
@@ -99,8 +99,8 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:text="Avtomobile"
+            android:textColor="@color/color_app_main"
             android:textSize="18dp"
-            android:textColor="#000000"
             app:layout_constraintBottom_toBottomOf="@id/temp_product_name"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="@id/temp_product_name" />
@@ -111,8 +111,8 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:text="20 000 000 so'm"
+            android:textColor="@color/color_app_main"
             android:textSize="18dp"
-            android:textColor="#000000"
             app:layout_constraintBottom_toBottomOf="@id/temp_price_product"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="@id/temp_price_product" />
@@ -123,8 +123,8 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:text="12.09.2023"
+            android:textColor="@color/color_app_main"
             android:textSize="18dp"
-            android:textColor="#000000"
             app:layout_constraintBottom_toBottomOf="@id/temp_start_date"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="@id/temp_start_date" />
@@ -135,8 +135,8 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:text="10 month"
+            android:textColor="@color/color_app_main"
             android:textSize="18dp"
-            android:textColor="#000000"
             app:layout_constraintBottom_toBottomOf="@id/temp_month_of_rent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="@id/temp_month_of_rent" />
@@ -147,8 +147,8 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:text="2 000 000 so'm"
+            android:textColor="@color/color_app_main"
             android:textSize="18dp"
-            android:textColor="#000000"
             app:layout_constraintBottom_toBottomOf="@id/temp_advance_payment"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="@id/temp_advance_payment" />
@@ -159,8 +159,8 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:text="10 000 000 so'm"
+            android:textColor="@color/color_app_main"
             android:textSize="18dp"
-            android:textColor="#000000"
             app:layout_constraintBottom_toBottomOf="@id/temp_check_pay"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="@id/temp_check_pay" />
@@ -172,12 +172,12 @@
             android:layout_marginVertical="10dp"
             android:layout_marginStart="20dp"
             android:text="Bu clientimiz oyligi chiqqanida beradi..."
+            android:textColor="@color/color_app_main"
             android:textSize="18dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_bias="0"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            android:textColor="#000000"
             app:layout_constraintTop_toBottomOf="@id/temp_comment" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="16dp"
-    android:layout_marginTop="8dp"
+    android:layout_marginVertical="8dp"
     app:cardCornerRadius="16dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -21,6 +21,7 @@
             android:layout_margin="16dp"
             android:text="To'lash sanasi: "
             android:textSize="18dp"
+            android:textColor="#FFF"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -31,6 +32,7 @@
             android:layout_marginTop="8dp"
             android:text="Summa: "
             android:textSize="18dp"
+            android:textColor="#FFF"
             app:layout_constraintLeft_toLeftOf="@id/txt_muddat"
             app:layout_constraintTop_toBottomOf="@id/txt_muddat" />
 
@@ -41,7 +43,8 @@
             android:layout_marginTop="8dp"
             android:layout_marginBottom="16dp"
             android:text="To'langanlik holati: "
-            android:textSize="18sp"
+            android:textSize="18dp"
+            android:textColor="#FFF"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="@id/txt_summa"
             app:layout_constraintTop_toBottomOf="@id/txt_summa" />
@@ -52,6 +55,8 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:text="20.09.2024"
+            android:textSize="15dp"
+            android:textColor="#FFF"
             app:layout_constraintBottom_toBottomOf="@id/txt_muddat"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="@id/txt_muddat" />
@@ -62,6 +67,8 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:text="2 000 000 so'm"
+            android:textColor="#FFF"
+            android:textSize="15dp"
             app:layout_constraintBottom_toBottomOf="@id/txt_summa"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="@id/txt_summa" />
@@ -71,6 +78,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Kutilmoqda"
+            android:textColor="#FFF"
+            android:textSize="15dp"
             app:layout_constraintBottom_toBottomOf="@id/temp_start_date"
             app:layout_constraintRight_toRightOf="@id/muddat"
             app:layout_constraintTop_toTopOf="@id/temp_start_date" />

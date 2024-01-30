@@ -10,8 +10,6 @@ import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.sellerapp.R
 import com.example.sellerapp.databinding.ScreenSplashBinding
-import com.example.sellerapp.presentation.screens.main.MainScreen
-import com.example.sellerapp.utils.replaceScreenWithoutSave
 
 @SuppressLint("CustomSplashScreen")
 class SplashScreen: Fragment(R.layout.screen_splash) {

@@ -5,18 +5,17 @@ import com.example.sellerapp.data.model.UserData
 
 class EditClientViewModel {
     val model = EditClientModel()
-    var transferData = MutableLiveData<List<UserData>>()
-    fun loadData() {
-        transferData.value = model.getAllUsers()
+    var allUserLD = MutableLiveData<List<UserData>>()
+    var userLD = MutableLiveData<UserData>()
+    fun getAllUser() {
+        allUserLD.value = model.getAllUsers()
     }
 
-    fun addClient(userData: UserData) {
-        model.addClient(userData)
-        loadData()
+    fun getUserById(id : Long) {
+        userLD.value = model.getUserById(id)
     }
 
     fun editClient(userData: UserData) {
         model.editClient(userData)
-        loadData()
     }
 }

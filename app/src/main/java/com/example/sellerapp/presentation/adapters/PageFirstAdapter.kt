@@ -10,7 +10,6 @@ import com.example.sellerapp.data.model.UserData
 import com.example.sellerapp.databinding.ItemAddClientBinding
 import java.text.SimpleDateFormat
 import java.util.Calendar
-import java.util.TimeZone
 
 class PageFirstAdapter: ListAdapter<UserData, PageFirstAdapter.ClientViewHolder>(GroupDiffUtil) {
     private var LongSelectListener: ((UserData) -> Unit)?=null
@@ -22,7 +21,6 @@ class PageFirstAdapter: ListAdapter<UserData, PageFirstAdapter.ClientViewHolder>
         }
 
         override fun areContentsTheSame(oldItem: UserData, newItem: UserData): Boolean {
-            //return oldItem.firstName == newItem.firstName  && oldItem.phoneNumber == newItem.phoneNumber
             return oldItem.hashCode() == newItem.hashCode()
         }
     }
@@ -45,13 +43,6 @@ class PageFirstAdapter: ListAdapter<UserData, PageFirstAdapter.ClientViewHolder>
             val item = getItem(absoluteAdapterPosition)
             binding.fullName.text = "${item.firstName} ${item.secondName}"
             binding.number.text = item.phoneNumber
-
-//            number.text = currentList[absoluteAdapterPosition].phoneNumber
-//            val c: Calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"))
-//            c.add(Calendar.MONTH, +1)
-//            val result = c.timeInMillis
-//
-//            date.text = getDate(result, "dd/MM/yyyy")
         }
     }
 

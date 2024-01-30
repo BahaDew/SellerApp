@@ -1,9 +1,9 @@
 package com.example.sellerapp.domain
 
-import android.util.Log
 import com.example.sellerapp.data.model.ProductData
 import com.example.sellerapp.data.model.UserData
 import com.example.sellerapp.data.source.MyDatabase
+import com.example.sellerapp.data.source.MyPref
 
 class AppRepositoryImpl : AppRepository {
     companion object {
@@ -13,7 +13,7 @@ class AppRepositoryImpl : AppRepository {
             return instance
         }
     }
-
+    private val myPref = MyPref.getInstance()
     private val db = MyDatabase.getInstance()
 
     override fun getAllProduct(): List<ProductData> = db.getProductDao().getAllProduct()
@@ -23,6 +23,10 @@ class AppRepositoryImpl : AppRepository {
     override fun updateProduct(data: ProductData) = db.getProductDao().updateProduct(data)
 
     override fun deleteProduct(data: ProductData) = db.getProductDao().deleteProduct(data)
+    override fun deleteProductByUserId(userId: Long) {
+        db.getProductDao().deleteProductByUserId(userId)
+    }
+
     override fun getProductById(id: Long): ProductData {
         return db.getProductDao().getProductById(id)
     }
@@ -47,5 +51,34 @@ class AppRepositoryImpl : AppRepository {
     override fun getProductByUserId(userId: Long): List<ProductData> {
         return db.getProductDao().getProductByUserId(userId)
     }
+
+    override fun getUsersWithProduct(): Map<UserData, List<ProductData>> {
+        return db.getUserDao().getUsersWithProduct()
+    }
+
+    override fun putStringPref(key: String, value: String) {
+        myPref.putString(key, value)
+    }
+
+    override fun getStringPref(key: String, default: String) : String {
+        return myPref.getString(key, default)
+    }
+
+    override fun putBooleanPref(key: String, value: Boolean) {
+        myPref.putBoolean(key, value)
+    }
+
+    override fun getBooleanPref(key: String, default: Boolean) : Boolean {
+        return myPref.getBoolean(key, default)
+    }
+
+    override fun putLongPref(key: String, value: Long) {
+        myPref.putLong(key, value)
+    }
+
+    override fun getLongPref(key: String, default: Long): Long {
+        return myPref.getLong(key, default)
+    }
+
     override fun deleteUser(data: UserData) = db.getUserDao().deleteUser(data)
 }

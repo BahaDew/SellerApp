@@ -6,13 +6,10 @@ import com.example.sellerapp.data.model.UserData
 class HomeViewModel {
     val model = HomeModel()
     val transferData = MutableLiveData<List<UserData>>()
-    fun addClient(userData: UserData) {
-        model.addClient(userData)
-        getAllClients()
-    }
 
     fun deleteUser(userData: UserData) {
         model.deleteUser(userData)
+        model.deleteProductByUserId(userData.id)
         getAllClients()
     }
 

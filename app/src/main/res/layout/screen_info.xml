@@ -15,32 +15,21 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0" />
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/container_userinfo"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="24dp"
-        app:cardCornerRadius="16dp"
-        app:layout_constraintBottom_toTopOf="@id/recycler"
-        app:layout_constraintTop_toBottomOf="@id/appBar"
-        app:layout_constraintVertical_weight="2.8" />
 
     <ImageView
-        android:id="@+id/ic_back"
-        android:layout_width="34dp"
-        android:layout_height="34dp"
-        android:layout_marginStart="16dp"
-        android:background="?selectableItemBackgroundBorderless"
-        android:padding="6dp"
+        android:id="@+id/imageView"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="12dp"
+        android:background="?android:selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:padding="10dp"
         android:src="@drawable/ic_back"
         app:layout_constraintBottom_toBottomOf="@id/appBar"
-        app:layout_constraintHorizontal_bias="0"
-        app:layout_constraintLeft_toLeftOf="@id/appBar"
-        app:layout_constraintRight_toRightOf="@id/appBar"
+        app:layout_constraintStart_toStartOf="@id/appBar"
         app:layout_constraintTop_toTopOf="@id/appBar"
-        app:tint="@color/white"
-        android:contentDescription="@string/app_name" />
+        app:tint="@color/white" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -54,85 +43,116 @@
         app:layout_constraintRight_toRightOf="@id/appBar"
         app:layout_constraintTop_toTopOf="@id/appBar" />
 
+    <androidx.cardview.widget.CardView
+        android:id="@+id/container_userinfo"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="14dp"
+        app:cardCornerRadius="16dp"
+        app:layout_constraintBottom_toTopOf="@id/recycler"
+        app:layout_constraintTop_toBottomOf="@id/appBar"
+        app:layout_constraintVertical_weight="1.9">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/first_name"
+                style="@style/MyUserInfoText"
+                android:layout_marginTop="20dp"
+                android:text="Boxodir"
+                app:layout_constraintBottom_toTopOf="@id/lastname"
+                app:layout_constraintLeft_toRightOf="@id/img_user"
+                app:layout_constraintTop_toTopOf="@id/img_user" />
+
+            <TextView
+                android:id="@+id/lastname"
+                style="@style/MyUserInfoText"
+                android:layout_marginTop="15dp"
+                android:text="Yusubjonov"
+                app:layout_constraintBottom_toTopOf="@id/age"
+                app:layout_constraintLeft_toRightOf="@id/img_user"
+                app:layout_constraintTop_toBottomOf="@id/first_name" />
+
+            <TextView
+                android:id="@+id/age"
+                style="@style/MyUserInfoText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="20dp"
+                android:text="21 yosh"
+                app:layout_constraintBottom_toBottomOf="@id/img_user"
+                app:layout_constraintLeft_toRightOf="@id/img_user"
+                app:layout_constraintTop_toBottomOf="@id/lastname" />
+
+            <TextView
+                android:id="@+id/phone_number"
+                style="@style/MyUserInfoText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:text="+998 91 157 09 64"
+                android:textSize="18dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/img_user" />
+
+            <ImageView
+                android:id="@+id/img_user"
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:src="@drawable/user_circle_svgrepo_com"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0" />
+
+            <ImageView
+                android:id="@+id/ic_call"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginEnd="12dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="5dp"
+                android:src="@drawable/call_192_svgrepo_com"
+                app:layout_constraintBottom_toBottomOf="@id/phone_number"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@id/phone_number"
+                app:tint="@color/color_app_main" />
+            <View
+                android:id="@+id/btn_call"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintLeft_toLeftOf="@id/ic_call"
+                app:layout_constraintRight_toRightOf="@id/ic_call"
+                app:layout_constraintTop_toTopOf="@id/ic_call"
+                app:layout_constraintBottom_toBottomOf="@id/ic_call"
+                android:background="?android:selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:focusable="true"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/container_userinfo"
         app:layout_constraintVertical_weight="5"
+        tools:layout_editor_absoluteX="97dp"
         tools:listitem="@layout/item_product" />
 
-    <TextView
-        android:id="@+id/first_name"
-        style="@style/MyUserInfoText"
-        android:elevation="2dp"
-        android:text="Boxodir"
-        android:layout_marginTop="20dp"
-        app:layout_constraintLeft_toRightOf="@id/img_user"
-        app:layout_constraintTop_toTopOf="@id/img_user"
-        app:layout_constraintBottom_toTopOf="@id/lastname"/>
-
-    <TextView
-        android:id="@+id/lastname"
-        style="@style/MyUserInfoText"
-        android:elevation="2dp"
-        android:text="Yusubjonov"
-        android:layout_marginTop="15dp"
-        app:layout_constraintLeft_toRightOf="@id/img_user"
-        app:layout_constraintTop_toBottomOf="@id/first_name"
-        app:layout_constraintBottom_toTopOf="@id/age"/>
-    <TextView
-        android:id="@+id/age"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintLeft_toRightOf="@id/img_user"
-        app:layout_constraintTop_toBottomOf="@id/lastname"
-        android:text="21 yosh"
-        android:elevation="2dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="20dp"
-        style="@style/MyUserInfoText"
-        app:layout_constraintBottom_toBottomOf="@id/img_user"/>
-    <TextView
-        android:id="@+id/phone_number"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintLeft_toLeftOf="@id/container_userinfo"
-        app:layout_constraintTop_toBottomOf="@id/img_user"
-        android:text="+998 91 157 09 64"
-        android:elevation="2dp"
-        android:layout_marginStart="20dp"
-        app:layout_constraintBottom_toBottomOf="@id/container_userinfo"
-        style="@style/MyUserInfoText"/>
-    <ImageView
-        android:id="@+id/img_user"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:src="@drawable/user_circle_svgrepo_com"
-        android:elevation="10dp"
-        app:layout_constraintLeft_toLeftOf="@id/container_userinfo"
-        app:layout_constraintTop_toTopOf="@id/container_userinfo"
-        app:layout_constraintVertical_bias="0"
-        app:layout_constraintBottom_toBottomOf="@id/container_userinfo"/>
-    <ImageView
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:src="@drawable/call_192_svgrepo_com"
-        app:layout_constraintTop_toTopOf="@id/phone_number"
-        app:layout_constraintRight_toRightOf="@id/container_userinfo"
-        app:layout_constraintBottom_toBottomOf="@id/phone_number"
-        android:layout_marginEnd="10dp"
-        app:tint="@color/color_app_main"
-        android:padding="5dp"
-        android:elevation="10dp"/>
     <ImageView
         android:id="@+id/btn_add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
+        android:contentDescription="@string/app_name"
         android:src="@drawable/add_square_svgrepo_com"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:contentDescription="@string/app_name" />
+        app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

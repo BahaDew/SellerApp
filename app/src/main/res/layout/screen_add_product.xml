@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#FFF">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBar"
@@ -15,54 +16,18 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="34dp"
-        android:layout_height="34dp"
-        android:layout_marginStart="16dp"
-        android:background="?selectableItemBackgroundBorderless"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="12dp"
+        android:background="?android:selectableItemBackground"
         android:clickable="true"
         android:focusable="true"
-        android:padding="6dp"
+        android:padding="10dp"
         android:src="@drawable/ic_back"
         app:layout_constraintBottom_toBottomOf="@id/appBar"
         app:layout_constraintStart_toStartOf="@id/appBar"
         app:layout_constraintTop_toTopOf="@id/appBar"
         app:tint="@color/white" />
-
-
-    <!--    <EditText-->
-    <!--        android:id="@+id/editTextName"-->
-    <!--        android:layout_marginTop="16dp"-->
-    <!--        app:layout_constraintTop_toBottomOf="@id/appBar"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:background="@drawable/bg_oval"-->
-    <!--        android:layout_marginHorizontal="16dp"-->
-    <!--        android:hint="Name"-->
-    <!--        android:paddingStart="16dp"-->
-    <!--        android:layout_height="?android:actionBarSize"/>-->
-
-    <!--    <LinearLayout-->
-    <!--        android:id="@+id/name_client"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="56dp"-->
-    <!--        android:layout_marginHorizontal="16dp"-->
-    <!--        android:layout_marginTop="16dp"-->
-    <!--        android:background="@drawable/bg_oval"-->
-    <!--        app:layout_constraintTop_toBottomOf="@id/appBar">-->
-
-    <!--        <EditText-->
-    <!--            android:id="@+id/edit_text_client_name"-->
-    <!--            android:layout_width="match_parent"-->
-    <!--            android:layout_height="match_parent"-->
-    <!--            android:layout_gravity="center"-->
-    <!--            android:layout_marginHorizontal="16dp"-->
-    <!--            android:layout_marginVertical="12dp"-->
-    <!--            android:background="#00FFFFFF"-->
-    <!--            android:fontFamily="@font/nunito_regular"-->
-    <!--            android:hint="Name"-->
-    <!--            android:inputType="textCapSentences"-->
-    <!--            android:maxLength="16" />-->
-
-    <!--    </LinearLayout>-->
 
 
     <com.google.android.material.textfield.TextInputLayout
@@ -118,7 +83,7 @@
             android:layout_height="match_parent"
             android:fontFamily="@font/nunito"
             android:hint="Advance payment"
-            android:inputType="textEmailAddress"
+            android:inputType="numberDecimal"
             android:lines="1" />
     </com.google.android.material.textfield.TextInputLayout>
 

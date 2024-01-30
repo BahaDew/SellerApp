@@ -5,8 +5,8 @@ import com.example.sellerapp.domain.AppRepositoryImpl
 
 class HomeModel {
     private val repository = AppRepositoryImpl.getInstance()
-    fun addClient(userData: UserData) {
-        repository.addUser(userData)
+    fun deleteProductByUserId(userId : Long) {
+       repository.deleteProductByUserId(userId)
     }
 
     fun getAllClients(): List<UserData> {
