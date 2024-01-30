@@ -2,8 +2,10 @@ package com.example.sellerapp.presentation.screens.main.pages.thirdPage
 
 import android.app.AlertDialog
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -27,6 +29,7 @@ class LateClients : Fragment(R.layout.page_third) {
     private val binding by viewBinding(PageThirdBinding::bind)
     private val viewModel = PayTodayCViewModel()
     private val adapter = LatePaysAdapter()
+    private var timeEditComment: Long? = null
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.recycler.adapter = adapter
@@ -42,7 +45,16 @@ class LateClients : Fragment(R.layout.page_third) {
             findNavController().navigate(R.id.clientInfo, bundle)
         }
         adapter.setOnclickEdit {
-            openEditComment(it)
+            if (timeEditComment == null) {
+                openEditComment(it)
+                timeEditComment = System.currentTimeMillis()
+                Log.d("TTT", "Birinchi bosilishi")
+            } else if(System.currentTimeMillis() - timeEditComment!! > 1000) {
+                Log.d("TTT", "1 sekundan keyin bosti")
+                openEditComment(it)
+                timeEditComment = System.currentTimeMillis()
+            } else
+                Log.d("TTT", "Bosolmadi")
         }
     }
 
@@ -102,6 +114,8 @@ class LateClients : Fragment(R.layout.page_third) {
                 }
             }
         }
+        binding.placeholder.isGone = list.isNotEmpty()
+
         adapter.submitList(list)
     }
 
