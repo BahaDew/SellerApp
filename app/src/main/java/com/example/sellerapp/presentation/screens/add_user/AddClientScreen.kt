@@ -39,8 +39,8 @@ class AddClientScreen : Fragment(R.layout.screen_add_client) {
         initProductName()
         initProductPrice()
         initAdmancePayment()
+        initMonth()
         initView()
-       // initMonth()
     }
 
     private fun initView() {
@@ -48,17 +48,6 @@ class AddClientScreen : Fragment(R.layout.screen_add_client) {
             navController.navigateUp()
         }
         Log.d("TAG", "initView: $firstNameValid $lastNameValid $ageValid")
-        if (
-            firstNameValid &&
-            lastNameValid &&
-            ageValid &&
-            phoneNumberValid &&
-            productNameValid &&
-            productPriceValid &&
-            advancePaymentValid
-        ){
-            binding.btnSave.isEnabled = true
-        }
 
         if (
             firstNameValid &&
@@ -72,6 +61,7 @@ class AddClientScreen : Fragment(R.layout.screen_add_client) {
             binding.btnSave.isEnabled = true
             Toast.makeText(requireContext(), "Hammasi to'g'ri", Toast.LENGTH_SHORT).show()
         }
+
         binding.btnSave.setOnClickListener{
 
 //           if(!firstNameValid){
@@ -110,7 +100,6 @@ class AddClientScreen : Fragment(R.layout.screen_add_client) {
 
 
      //       else {
-
                 val userData = UserData(
                     id = 0L,
                     firstName = binding.firstname.text.toString(),
@@ -148,16 +137,25 @@ class AddClientScreen : Fragment(R.layout.screen_add_client) {
 
                 if (!latinPattern.matcher(inputText).matches()) {
                     binding.firstname.error = "Only Latin letters are allowed."
+                    binding.btnSave.isEnabled = false
                 } else {
                     // Clear the error if the input is valid
+                    binding.btnSave.isEnabled = true
                     binding.firstname.error = null
                 }
 
 
                 if(s.toString().length <= 2){
+                    binding.btnSave.isEnabled = false
                     binding.firstname.error = "Ismingiz kamida 3 harfdan iborat bo'lishi kerak!!!"
                 }
-                if(latinPattern.matcher(inputText).matches() && s.toString().length > 2) firstNameValid = true
+                else {
+                    binding.firstname.error = null
+                }
+                if(latinPattern.matcher(inputText).matches() && s.toString().length > 2)  {
+                    firstNameValid = true
+                    binding.btnSave.isEnabled = true
+                }
 
             }
 
@@ -181,16 +179,25 @@ class AddClientScreen : Fragment(R.layout.screen_add_client) {
                     if (!latinPattern.matcher(inputText).matches()) {
                         binding.lastname.error = "Only Latin letters are allowed."
                         lastNameValid = false
+                        binding.btnSave.isEnabled = true
                     } else {
                         // Clear the error if the input is valid
                         binding.lastname.error = null
+                        binding.btnSave.isEnabled = false
                     }
 
 
                     if(s.toString().length <= 4){
+                        binding.btnSave.isEnabled = false
                         binding.lastname.error = "Familiyangiz kamida 5 harfdan iborat bo'lishi kerak!!!"
                     }
-                if(latinPattern.matcher(inputText).matches() && s.toString().length > 4 )lastNameValid = true
+                else {
+                        binding.btnSave.isEnabled = true
+                    }
+                if(latinPattern.matcher(inputText).matches() && s.toString().length > 4 ) {
+                    lastNameValid = true
+                    binding.btnSave.isEnabled = true
+                }
             }
 
             override fun afterTextChanged(s: Editable?) {
@@ -210,8 +217,10 @@ class AddClientScreen : Fragment(R.layout.screen_add_client) {
 
                 if(!(s.toString().toInt() >= 16)){
                     binding.age.error = "Yoshingiz 16 yoshdan yuqori bulishi lozim!!!"
+                    binding.btnSave.isEnabled = false
                 }
                 else {
+                    binding.btnSave.isEnabled = false
                     ageValid = true
                     binding.age.error = null
                 }
@@ -233,12 +242,14 @@ class AddClientScreen : Fragment(R.layout.screen_add_client) {
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                if(s.toString().length < 9){
-                    binding.phoneText.error = "Bunday raqam mavjud emas"
+                if(s.toString().length == 17){
+                    phoneNumberValid = true
+                    binding.btnSave.isEnabled = true
+                    binding.phoneText.error = null
                 }
                 else {
-                    phoneNumberValid = true
-                    binding.phoneText.error = null
+                    binding.btnSave.isEnabled = false
+                    binding.phoneText.error = "Bunday raqam mavjud emas"
                 }
             }
 
@@ -258,10 +269,12 @@ class AddClientScreen : Fragment(R.layout.screen_add_client) {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 if(s.toString().length < 2){
                     binding.productName.error = "Bunday mahsulot mavjud emas"
+                    binding.btnSave.isEnabled = false
                 }
                 else {
                     productNameValid = true
                     binding.productName.error = null
+                    binding.btnSave.isEnabled = false
                 }
             }
 
@@ -281,9 +294,11 @@ class AddClientScreen : Fragment(R.layout.screen_add_client) {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 productPriceValid = false
                 if(s.toString().equals("")){
+                    binding.btnSave.isEnabled = false
                     binding.productPrice.error = "Iltimos mahsulot narxini kiriting."
                 }
                 else {
+                    binding.btnSave.isEnabled = true
                     productPriceValid = true
                     binding.productPrice.error = null
                 }
@@ -305,9 +320,11 @@ class AddClientScreen : Fragment(R.layout.screen_add_client) {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 advancePaymentValid = false
                 if(s.toString().equals("")){
+                    binding.btnSave.isEnabled = false
                     binding.advancePayment.error = "Iltimos boshlangish tulov narxini kiriting."
                 }
                 else {
+                    binding.btnSave.isEnabled = true
                     advancePaymentValid = true
                     binding.advancePayment.error = null
                 }
@@ -327,10 +344,12 @@ class AddClientScreen : Fragment(R.layout.screen_add_client) {
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 monthValid = false
-                if(s.toString().toInt() < 3) {
+                if(s.toString().isNotEmpty() && s.toString().toInt() < 3) {
+                    binding.btnSave.isEnabled = false
                     binding.paymentMonth.error = "Eng kamida 3 oylik tulov muddatini kiritishingiz kerak."
                 }
                 else{
+                    binding.btnSave.isEnabled = true
                     monthValid = true
                     binding.paymentMonth.error = null
                 }
