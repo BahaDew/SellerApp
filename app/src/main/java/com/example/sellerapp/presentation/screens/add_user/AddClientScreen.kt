@@ -61,7 +61,6 @@ class AddClientScreen : Fragment(R.layout.screen_add_client) {
             binding.btnSave.isEnabled = true
             Toast.makeText(requireContext(), "Hammasi to'g'ri", Toast.LENGTH_SHORT).show()
         }
-
         binding.btnSave.setOnClickListener{
 
 //           if(!firstNameValid){
@@ -122,6 +121,7 @@ class AddClientScreen : Fragment(R.layout.screen_add_client) {
                 navController.navigateUp()
      //       }
         }
+
     }
     private fun initFirstName(){
         firstNameValid = false
