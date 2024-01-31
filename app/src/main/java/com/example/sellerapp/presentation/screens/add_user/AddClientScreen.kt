@@ -26,6 +26,7 @@ class AddClientScreen : Fragment(R.layout.screen_add_client) {
     private var productPriceValid = false
     private var advancePaymentValid = false
     private var monthValid = false
+    private var isReadyToSave =  false
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initView()
@@ -36,7 +37,7 @@ class AddClientScreen : Fragment(R.layout.screen_add_client) {
         initProductName()
         initProductPrice()
         initAdmancePayment()
-       // initMonth()
+        initMonth()
     }
 
     private fun initView() {
@@ -94,7 +95,6 @@ class AddClientScreen : Fragment(R.layout.screen_add_client) {
 
 
      //       else {
-                binding.btnSave.isEnabled = true
                 val userData = UserData(
                     id = 0L,
                     firstName = binding.firstname.text.toString(),
@@ -115,32 +115,32 @@ class AddClientScreen : Fragment(R.layout.screen_add_client) {
                 )
                 viewModel.addClientAndProduct(userData, productData)
                 findNavController().navigateUp()
-     //       }
         }
     }
     private fun initFirstName(){
-        firstNameValid = false
+        isReadyToSave = false
         binding.firstname.addTextChangedListener(object :TextWatcher{
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-
-            }
-
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 val latinPattern = Pattern.compile("[a-zA-Z]+")
                 val inputText = s?.toString() ?: ""
-                firstNameValid = false
 
                 if (!latinPattern.matcher(inputText).matches()) {
                     binding.firstname.error = "Only Latin letters are allowed."
+                    isReadyToSave = false
                 } else {
-                    // Clear the error if the input is valid
                     binding.firstname.error = null
+                    isReadyToSave = true
                 }
-
 
                 if(s.toString().length <= 2){
                     binding.firstname.error = "Ismingiz kamida 3 harfdan iborat bo'lishi kerak!!!"
+                    isReadyToSave = false
                 }
+                else {
+                    binding.firstname.error  = null
+                }
+
                 if(latinPattern.matcher(inputText).matches() && s.toString().length > 2) firstNameValid = true
 
             }
@@ -192,7 +192,7 @@ class AddClientScreen : Fragment(R.layout.screen_add_client) {
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
 
-                if(!(s.toString().toInt() >= 16)){
+                if((!s.toString().equals("")) &&!(s.toString().toInt() >= 16)){
                     binding.age.error = "Yoshingiz 16 yoshdan yuqori bulishi lozim!!!"
                 }
                 else {
@@ -217,7 +217,7 @@ class AddClientScreen : Fragment(R.layout.screen_add_client) {
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                if(s.toString().length < 9){
+                if(s.toString().length < 9 ){
                     binding.phoneText.error = "Bunday raqam mavjud emas"
                 }
                 else {
@@ -311,8 +311,11 @@ class AddClientScreen : Fragment(R.layout.screen_add_client) {
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 monthValid = false
-                if(s.toString().toInt() < 3) {
-                    binding.paymentMonth.error = "Eng kamida 3 oylik tulov muddatini kiritishingiz kerak."
+                if((!s.toString().equals("")) && s.toString().toInt() < 3) {
+                    binding.paymentMonth.error = "Bulib tulash muddati minimal 3 oy."
+                }
+                else if ((!s.toString().equals("")) && s.toString().toInt() > 12){
+                    binding.paymentMonth.error = "Bulib tulash muddati maksimal 12 oy"
                 }
                 else{
                     monthValid = true
