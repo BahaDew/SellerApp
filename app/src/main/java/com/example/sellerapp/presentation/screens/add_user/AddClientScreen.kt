@@ -28,6 +28,7 @@ class AddClientScreen : Fragment(R.layout.screen_add_client) {
     private var productPriceValid = false
     private var advancePaymentValid = false
     private var monthValid = false
+    private var isReadyToSave =  false
     private val navController by lazy(LazyThreadSafetyMode.NONE) { findNavController() }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -178,24 +179,18 @@ class AddClientScreen : Fragment(R.layout.screen_add_client) {
                     lastNameValid = true
 
                     if (!latinPattern.matcher(inputText).matches()) {
-                        binding.btnSave.isEnabled = false
                         binding.lastname.error = "Only Latin letters are allowed."
                         lastNameValid = false
                     } else {
-                        binding.btnSave.isEnabled = true
                         // Clear the error if the input is valid
                         binding.lastname.error = null
                     }
 
 
                     if(s.toString().length <= 4){
-                        binding.btnSave.isEnabled = false
                         binding.lastname.error = "Familiyangiz kamida 5 harfdan iborat bo'lishi kerak!!!"
                     }
-                if(latinPattern.matcher(inputText).matches() && s.toString().length > 4 ){
-                    lastNameValid = true
-                    binding.btnSave.isEnabled = true
-                }
+                if(latinPattern.matcher(inputText).matches() && s.toString().length > 4 )lastNameValid = true
             }
 
             override fun afterTextChanged(s: Editable?) {
@@ -214,11 +209,9 @@ class AddClientScreen : Fragment(R.layout.screen_add_client) {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
 
                 if(!(s.toString().toInt() >= 16)){
-                    binding.btnSave.isEnabled = false
                     binding.age.error = "Yoshingiz 16 yoshdan yuqori bulishi lozim!!!"
                 }
                 else {
-                    binding.btnSave.isEnabled = true
                     ageValid = true
                     binding.age.error = null
                 }
@@ -233,40 +226,24 @@ class AddClientScreen : Fragment(R.layout.screen_add_client) {
     }
     private fun initPhoneNumber(){
         phoneNumberValid = false
-
-        binding.phoneText.setText("+998")
-        binding.phoneText.setSelection(4)
         binding.phoneText.addTextChangedListener(object :TextWatcher{
 
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
 
             }
 
-
-            @SuppressLint("SetTextI18n")
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                if (s.toString().length <= 4) {
-                    binding.phoneText.setText("+998")
-                    binding.phoneText.setSelection(3)
-                }
-                if(s.toString().length == 17){
-                    binding.btnSave.isEnabled = true
-                    binding.phoneText.error = null
+                if(s.toString().length < 9){
+                    binding.phoneText.error = "Bunday raqam mavjud emas"
                 }
                 else {
-                    binding.btnSave.isEnabled = false
-                    binding.phoneText.error = "Bunday raqam mavjud emas"
+                    phoneNumberValid = true
+                    binding.phoneText.error = null
                 }
             }
 
             override fun afterTextChanged(s: Editable?) {
-//                val userInput = s.toString()
-//
-//                // Check if the user removed the "+998" part
-//                if (!userInput.startsWith("+998")) {
-//                    // Restore the "+998" part
-//                    s?.replace(0, 0, "+998 ")
-//                }
+
             }
 
         })
@@ -281,10 +258,8 @@ class AddClientScreen : Fragment(R.layout.screen_add_client) {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 if(s.toString().length < 2){
                     binding.productName.error = "Bunday mahsulot mavjud emas"
-                    binding.btnSave.isEnabled = false
                 }
                 else {
-                    binding.btnSave.isEnabled = true
                     productNameValid = true
                     binding.productName.error = null
                 }
@@ -306,11 +281,9 @@ class AddClientScreen : Fragment(R.layout.screen_add_client) {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 productPriceValid = false
                 if(s.toString().equals("")){
-                    binding.btnSave.isEnabled = false
                     binding.productPrice.error = "Iltimos mahsulot narxini kiriting."
                 }
                 else {
-                    binding.btnSave.isEnabled = true
                     productPriceValid = true
                     binding.productPrice.error = null
                 }
@@ -332,11 +305,9 @@ class AddClientScreen : Fragment(R.layout.screen_add_client) {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 advancePaymentValid = false
                 if(s.toString().equals("")){
-                    binding.btnSave.isEnabled = false
                     binding.advancePayment.error = "Iltimos boshlangish tulov narxini kiriting."
                 }
                 else {
-                    binding.btnSave.isEnabled = true
                     advancePaymentValid = true
                     binding.advancePayment.error = null
                 }
@@ -357,11 +328,9 @@ class AddClientScreen : Fragment(R.layout.screen_add_client) {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 monthValid = false
                 if(s.toString().toInt() < 3) {
-                    binding.btnSave.isEnabled = false
                     binding.paymentMonth.error = "Eng kamida 3 oylik tulov muddatini kiritishingiz kerak."
                 }
                 else{
-                    binding.btnSave.isEnabled = true
                     monthValid = true
                     binding.paymentMonth.error = null
                 }
