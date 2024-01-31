@@ -20,11 +20,9 @@ class AddClientScreen : Fragment(R.layout.screen_add_client) {
     }
 
     private fun initView() {
-
         binding.imageView.setOnClickListener {
             findNavController().navigateUp()
         }
-
         binding.btnSave.setOnClickListener{
             val userData = UserData(
                 id = 0L,
@@ -47,5 +45,6 @@ class AddClientScreen : Fragment(R.layout.screen_add_client) {
             viewModel.addClientAndProduct(userData, productData)
             findNavController().navigateUp()
         }
+
     }
 }
