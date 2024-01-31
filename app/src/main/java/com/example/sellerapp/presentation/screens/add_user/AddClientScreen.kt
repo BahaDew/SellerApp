@@ -295,7 +295,7 @@ class AddClientScreen : Fragment(R.layout.screen_add_client) {
                 productPriceValid = false
                 if(s.toString().equals("")){
                     binding.btnSave.isEnabled = false
-                    binding.productPrice.error = "Iltimos mahsulot narxini kiriting."
+                    binding.productPrice.error = "Mahsulot narxini kiriting."
                 }
                 else {
                     binding.btnSave.isEnabled = true
@@ -321,7 +321,7 @@ class AddClientScreen : Fragment(R.layout.screen_add_client) {
                 advancePaymentValid = false
                 if(s.toString().equals("")){
                     binding.btnSave.isEnabled = false
-                    binding.advancePayment.error = "Iltimos boshlangish tulov narxini kiriting."
+                    binding.advancePayment.error = "Boshlangish tulov narxini kiriting."
                 }
                 else {
                     binding.btnSave.isEnabled = true
@@ -347,6 +347,10 @@ class AddClientScreen : Fragment(R.layout.screen_add_client) {
                 if(s.toString().isNotEmpty() && s.toString().toInt() < 3) {
                     binding.btnSave.isEnabled = false
                     binding.paymentMonth.error = "Eng kamida 3 oylik tulov muddatini kiritishingiz kerak."
+                }
+               else if (s.toString().isNotEmpty() && s.toString().toInt() > 12){
+                    binding.btnSave.isEnabled = false
+                    binding.paymentMonth.error = "Bulib tulashning maksimal muddati 12 oy"
                 }
                 else{
                     binding.btnSave.isEnabled = true
