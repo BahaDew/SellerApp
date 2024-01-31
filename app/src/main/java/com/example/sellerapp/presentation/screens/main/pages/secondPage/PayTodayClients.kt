@@ -89,7 +89,7 @@ class PayTodayClients : Fragment(R.layout.page_second) {
             for (i in list) {
                 try {
                     val smsManager = SmsManager.getDefault()
-                    val phoneNumber = i.phoneNumber.replace(" ", "").removeRange(0, 1)
+                    val phoneNumber = i.phoneNumber.replace(" ", "")
                     Log.d("TTT", phoneNumber)
                     smsManager.sendTextMessage(phoneNumber, null, it, null, null)
                     Log.d("TTT", "SMS Muvafaqiyatli yuborildi!")

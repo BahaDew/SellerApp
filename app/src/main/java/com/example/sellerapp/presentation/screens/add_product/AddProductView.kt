@@ -24,8 +24,8 @@ class AddProductView : Fragment(R.layout.screen_add_product) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        if(monthValid)binding.btnSave.isEnabled = true
         binding.btnSave.setOnClickListener {
-            if(!monthValid)return@setOnClickListener
             viewModel.onClickSaveButton(
                 ProductData(
                     id = 0L,

@@ -83,6 +83,7 @@
             android:layout_height="match_parent"
             android:fontFamily="@font/nunito"
             android:hint="Age"
+            android:maxLength="2"
             android:inputType="number"
             android:lines="1" />
     </com.google.android.material.textfield.TextInputLayout>

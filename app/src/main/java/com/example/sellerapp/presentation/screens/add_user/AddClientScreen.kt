@@ -15,6 +15,7 @@ import com.example.sellerapp.R
 import com.example.sellerapp.data.model.ProductData
 import com.example.sellerapp.data.model.UserData
 import com.example.sellerapp.databinding.ScreenAddClientBinding
+import java.text.NumberFormat
 import java.util.regex.Pattern
 
 class AddClientScreen : Fragment(R.layout.screen_add_client) {
@@ -28,7 +29,7 @@ class AddClientScreen : Fragment(R.layout.screen_add_client) {
     private var productPriceValid = false
     private var advancePaymentValid = false
     private var monthValid = false
-    private var isReadyToSave =  false
+    private var isReadyToSave = false
     private val navController by lazy(LazyThreadSafetyMode.NONE) { findNavController() }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -57,11 +58,11 @@ class AddClientScreen : Fragment(R.layout.screen_add_client) {
             productNameValid &&
             productPriceValid &&
             advancePaymentValid
-        ){
+        ) {
             binding.btnSave.isEnabled = true
             Toast.makeText(requireContext(), "Hammasi to'g'ri", Toast.LENGTH_SHORT).show()
         }
-        binding.btnSave.setOnClickListener{
+        binding.btnSave.setOnClickListener {
 
 //           if(!firstNameValid){
 //               println("Iltimos ismingizni qayta kiriting.")
@@ -98,34 +99,35 @@ class AddClientScreen : Fragment(R.layout.screen_add_client) {
 //            }
 
 
-     //       else {
-                val userData = UserData(
-                    id = 0L,
-                    firstName = binding.firstname.text.toString(),
-                    secondName = binding.lastname.text.toString(),
-                    age = binding.age.text.toString().toInt(),
-                    phoneNumber = binding.phoneText.text.toString()
-                )
-                val productData = ProductData(
-                    productName = binding.productName.text.toString(),
-                    id = 0L,
-                    priceProduct = binding.productPrice.text.toString().toDouble(),
-                    advancePayment = binding.advancePayment.text.toString().toDouble(),
-                    monthOfRent = binding.paymentMonth.text.toString().toInt(),
-                    comment = binding.comment.text.toString(),
-                    checkPay = 0.0,
-                    userId = 0L,
-                    startDate = System.currentTimeMillis()
-                )
-                viewModel.addClientAndProduct(userData, productData)
-                navController.navigateUp()
-     //       }
+            //       else {
+            val userData = UserData(
+                id = 0L,
+                firstName = binding.firstname.text.toString(),
+                secondName = binding.lastname.text.toString(),
+                age = binding.age.text.toString().toInt(),
+                phoneNumber = "+998 " + binding.phoneText.text.toString()
+            )
+            val productData = ProductData(
+                productName = binding.productName.text.toString(),
+                id = 0L,
+                priceProduct = binding.productPrice.text.toString().replace(" ", "").toDouble(),
+                advancePayment = binding.advancePayment.text.toString().replace(" ", "").toDouble(),
+                monthOfRent = binding.paymentMonth.text.toString().toInt(),
+                comment = binding.comment.text.toString(),
+                checkPay = 0.0,
+                userId = 0L,
+                startDate = System.currentTimeMillis()
+            )
+            viewModel.addClientAndProduct(userData, productData)
+            navController.navigateUp()
+            //       }
         }
 
     }
-    private fun initFirstName(){
+
+    private fun initFirstName() {
         firstNameValid = false
-        binding.firstname.addTextChangedListener(object :TextWatcher{
+        binding.firstname.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
 
             }
@@ -145,14 +147,13 @@ class AddClientScreen : Fragment(R.layout.screen_add_client) {
                 }
 
 
-                if(s.toString().length <= 2){
+                if (s.toString().length <= 2) {
                     binding.btnSave.isEnabled = false
                     binding.firstname.error = "Ismingiz kamida 3 harfdan iborat bo'lishi kerak!!!"
-                }
-                else {
+                } else {
                     binding.firstname.error = null
                 }
-                if(latinPattern.matcher(inputText).matches() && s.toString().length > 2)  {
+                if (latinPattern.matcher(inputText).matches() && s.toString().length > 2) {
                     firstNameValid = true
                     binding.btnSave.isEnabled = true
                 }
@@ -164,37 +165,38 @@ class AddClientScreen : Fragment(R.layout.screen_add_client) {
 
         })
     }
-    private fun initLastName(){
+
+    private fun initLastName() {
         lastNameValid = false
-        binding.lastname.addTextChangedListener(object :TextWatcher{
+        binding.lastname.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
 
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                    val latinPattern = Pattern.compile("[a-zA-Z]+")
-                    val inputText = s?.toString() ?: ""
-                    lastNameValid = true
+                val latinPattern = Pattern.compile("[a-zA-Z]+")
+                val inputText = s?.toString() ?: ""
+                lastNameValid = true
 
-                    if (!latinPattern.matcher(inputText).matches()) {
-                        binding.lastname.error = "Only Latin letters are allowed."
-                        lastNameValid = false
-                        binding.btnSave.isEnabled = true
-                    } else {
-                        // Clear the error if the input is valid
-                        binding.lastname.error = null
-                        binding.btnSave.isEnabled = false
-                    }
+                if (!latinPattern.matcher(inputText).matches()) {
+                    binding.lastname.error = "Only Latin letters are allowed."
+                    lastNameValid = false
+                    binding.btnSave.isEnabled = true
+                } else {
+                    // Clear the error if the input is valid
+                    binding.lastname.error = null
+                    binding.btnSave.isEnabled = false
+                }
 
 
-                    if(s.toString().length <= 4){
-                        binding.btnSave.isEnabled = false
-                        binding.lastname.error = "Familiyangiz kamida 5 harfdan iborat bo'lishi kerak!!!"
-                    }
-                else {
-                        binding.btnSave.isEnabled = true
-                    }
-                if(latinPattern.matcher(inputText).matches() && s.toString().length > 4 ) {
+                if (s.toString().length <= 4) {
+                    binding.btnSave.isEnabled = false
+                    binding.lastname.error =
+                        "Familiyangiz kamida 5 harfdan iborat bo'lishi kerak!!!"
+                } else {
+                    binding.btnSave.isEnabled = true
+                }
+                if (latinPattern.matcher(inputText).matches() && s.toString().length > 4) {
                     lastNameValid = true
                     binding.btnSave.isEnabled = true
                 }
@@ -206,20 +208,20 @@ class AddClientScreen : Fragment(R.layout.screen_add_client) {
 
         })
     }
-    private fun initAge(){
+
+    private fun initAge() {
         ageValid = false
-        binding.age.addTextChangedListener(object :TextWatcher{
+        binding.age.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
 
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
 
-                if(!(s.toString().toInt() >= 16)){
+                if (s.toString().isNotEmpty() && !(s.toString().toInt() >= 16)) {
                     binding.age.error = "Yoshingiz 16 yoshdan yuqori bulishi lozim!!!"
                     binding.btnSave.isEnabled = false
-                }
-                else {
+                } else {
                     binding.btnSave.isEnabled = false
                     ageValid = true
                     binding.age.error = null
@@ -233,21 +235,21 @@ class AddClientScreen : Fragment(R.layout.screen_add_client) {
 
         })
     }
-    private fun initPhoneNumber(){
+
+    private fun initPhoneNumber() {
         phoneNumberValid = false
-        binding.phoneText.addTextChangedListener(object :TextWatcher{
+        binding.phoneText.addTextChangedListener(object : TextWatcher {
 
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
 
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                if(s.toString().length == 17){
+                if (s.toString().length  == 12) {
                     phoneNumberValid = true
                     binding.btnSave.isEnabled = true
                     binding.phoneText.error = null
-                }
-                else {
+                } else {
                     binding.btnSave.isEnabled = false
                     binding.phoneText.error = "Bunday raqam mavjud emas"
                 }
@@ -259,19 +261,19 @@ class AddClientScreen : Fragment(R.layout.screen_add_client) {
 
         })
     }
-    private fun initProductName(){
+
+    private fun initProductName() {
         productNameValid = false
-        binding.productName.addTextChangedListener(object :TextWatcher{
+        binding.productName.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
 
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                if(s.toString().length < 2){
+                if (s.toString().length < 2) {
                     binding.productName.error = "Bunday mahsulot mavjud emas"
                     binding.btnSave.isEnabled = false
-                }
-                else {
+                } else {
                     productNameValid = true
                     binding.productName.error = null
                     binding.btnSave.isEnabled = false
@@ -284,20 +286,20 @@ class AddClientScreen : Fragment(R.layout.screen_add_client) {
 
         })
     }
-    private fun initProductPrice(){
+
+    private fun initProductPrice() {
         productPriceValid = false
-        binding.productPrice.addTextChangedListener(object :TextWatcher{
+        binding.productPrice.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
 
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 productPriceValid = false
-                if(s.toString().equals("")){
+                if (s.toString().equals("")) {
                     binding.btnSave.isEnabled = false
                     binding.productPrice.error = "Mahsulot narxini kiriting."
-                }
-                else {
+                } else {
                     binding.btnSave.isEnabled = true
                     productPriceValid = true
                     binding.productPrice.error = null
@@ -305,25 +307,30 @@ class AddClientScreen : Fragment(R.layout.screen_add_client) {
             }
 
             override fun afterTextChanged(s: Editable?) {
-
+                val editText = numberFormat(s.toString().replace(" ", ""))
+                if(s != null && !s.endsWith(editText)){
+                    binding.productPrice.setText(editText)
+                    binding.productPrice.setSelection(editText.length)
+                }
             }
 
         })
     }
-    private fun initAdmancePayment(){
+
+    private fun initAdmancePayment() {
         advancePaymentValid = false
-        binding.advancePayment.addTextChangedListener(object :TextWatcher{
+        binding.advancePayment.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
 
             }
 
+            @SuppressLint("SetTextI18n")
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 advancePaymentValid = false
-                if(s.toString().equals("")){
+                if (s.toString() == "") {
                     binding.btnSave.isEnabled = false
                     binding.advancePayment.error = "Boshlangish tulov narxini kiriting."
-                }
-                else {
+                } else {
                     binding.btnSave.isEnabled = true
                     advancePaymentValid = true
                     binding.advancePayment.error = null
@@ -331,28 +338,31 @@ class AddClientScreen : Fragment(R.layout.screen_add_client) {
             }
 
             override fun afterTextChanged(s: Editable?) {
-
+                val format = numberFormat(s.toString().replace(" ", ""))
+                if(s != null && !s.endsWith(format)) {
+                    binding.advancePayment.setText(format)
+                    binding.advancePayment.setSelection(format.length)
+                }
             }
-
         })
     }
-    private fun initMonth(){
-        binding.paymentMonth.addTextChangedListener(object :TextWatcher{
+
+    private fun initMonth() {
+        binding.paymentMonth.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
 
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 monthValid = false
-                if(s.toString().isNotEmpty() && s.toString().toInt() < 3) {
+                if (s.toString().isNotEmpty() && s.toString().toInt() < 3) {
                     binding.btnSave.isEnabled = false
-                    binding.paymentMonth.error = "Eng kamida 3 oylik tulov muddatini kiritishingiz kerak."
-                }
-               else if (s.toString().isNotEmpty() && s.toString().toInt() > 12){
+                    binding.paymentMonth.error =
+                        "Eng kamida 3 oylik tulov muddatini kiritishingiz kerak."
+                } else if (s.toString().isNotEmpty() && s.toString().toInt() > 12) {
                     binding.btnSave.isEnabled = false
                     binding.paymentMonth.error = "Bulib tulashning maksimal muddati 12 oy"
-                }
-                else{
+                } else {
                     binding.btnSave.isEnabled = true
                     monthValid = true
                     binding.paymentMonth.error = null
@@ -364,5 +374,11 @@ class AddClientScreen : Fragment(R.layout.screen_add_client) {
             }
 
         })
+    }
+
+    private fun numberFormat(number: String): String {
+        val num = number.toLongOrNull() ?: return ""
+        val formatter = NumberFormat.getInstance()
+        return formatter.format(num)
     }
 }
