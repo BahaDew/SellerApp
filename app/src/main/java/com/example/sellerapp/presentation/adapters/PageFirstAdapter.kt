@@ -12,7 +12,7 @@ import java.text.SimpleDateFormat
 import java.util.Calendar
 
 class PageFirstAdapter: ListAdapter<UserData, PageFirstAdapter.ClientViewHolder>(GroupDiffUtil) {
-    private var LongSelectListener: ((UserData) -> Unit)?=null
+    private var longSelectListener: ((UserData) -> Unit)?=null
     private var selectedItemListener: ((UserData) -> Unit)?=null
 
     object GroupDiffUtil : DiffUtil.ItemCallback<UserData>() {
@@ -33,7 +33,7 @@ class PageFirstAdapter: ListAdapter<UserData, PageFirstAdapter.ClientViewHolder>
                 selectedItemListener?.invoke(currentList[absoluteAdapterPosition])
             }
             binding.root.setOnLongClickListener {
-                LongSelectListener?.invoke(currentList[absoluteAdapterPosition])
+                longSelectListener?.invoke(currentList[absoluteAdapterPosition])
                 return@setOnLongClickListener true
             }
         }
@@ -65,7 +65,7 @@ class PageFirstAdapter: ListAdapter<UserData, PageFirstAdapter.ClientViewHolder>
 
 
     fun setLongSelectListener(block : (UserData) -> Unit) {
-        this.LongSelectListener = block
+        this.longSelectListener = block
     }
     fun setSelectedItemListener(block : (UserData) -> Unit) {
         this.selectedItemListener = block

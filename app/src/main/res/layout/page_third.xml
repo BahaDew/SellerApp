@@ -13,17 +13,17 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:listitem="@layout/item_late_pay"/>
-    <TextView
+    <ImageView
         android:visibility="gone"
         android:id="@+id/placeholder"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="The list here is still empty"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:textColor="@color/color_app_main"
-        android:fontFamily="@font/nunito_regular"
-        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/illustration_undraw_business_deal"
+        android:layout_marginHorizontal="20dp"
+        app:layout_constraintDimensionRatio="1:1"
+        android:contentDescription="@string/app_name"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

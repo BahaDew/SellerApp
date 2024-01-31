@@ -49,7 +49,7 @@ class PayMonthView : Fragment(R.layout.screen_pay_month) {
     }
 
     private fun createPayMontData(it: ProductData) {
-        val summa = (it.priceProduct - it.advance_payment) / it.monthOfRent
+        val summa = (it.priceProduct - it.advancePayment) / it.monthOfRent
         var startDate = getDate(it.startDate, dataFormat)
         val currentDate =
             convertStringToDateMillis(getDate(System.currentTimeMillis(), dataFormat), dataFormat)
@@ -61,7 +61,7 @@ class PayMonthView : Fragment(R.layout.screen_pay_month) {
             list.add(
                 PayMonthData(
                     summa = summa,
-                    payed = if (checkPay.roundToLong() >= summa.roundToLong()) 1 else if (dayMillS < currentDate) -1 else 0,
+                    paid = if (checkPay.roundToLong() >= summa.roundToLong()) 1 else if (dayMillS < currentDate) -1 else 0,
                     deadLine = startDate
                 ),
             )
@@ -75,14 +75,14 @@ class PayMonthView : Fragment(R.layout.screen_pay_month) {
         if (position != 0 && position != adapter.currentList.size - 1) {
             val prevItem = adapter.currentList[position - 1]
             val nextItem = adapter.currentList[position + 1]
-            if (prevItem.payed != 1) {
+            if (prevItem.paid != 1) {
                 Toast.makeText(
                     requireContext(),
                     "Avval oldingi oylar to'lanishi kerak",
                     Toast.LENGTH_SHORT
                 ).show()
                 return
-            } else if (nextItem.payed == 1) {
+            } else if (nextItem.paid == 1) {
                 Toast.makeText(
                     requireContext(),
                     "Ushbu oyni o'zgartira olmaysiz",
@@ -91,14 +91,14 @@ class PayMonthView : Fragment(R.layout.screen_pay_month) {
                 return
             }
         } else {
-            if (position == 0 && adapter.currentList[1].payed == 1) {
+            if (position == 0 && adapter.currentList[1].paid == 1) {
                 Toast.makeText(
                     requireContext(),
                     "Ushbu oyni o'zgartira olmaysiz",
                     Toast.LENGTH_SHORT
                 ).show()
                 return
-            } else if (position == adapter.currentList.size - 1 && adapter.currentList[position - 1].payed != 1) {
+            } else if (position == adapter.currentList.size - 1 && adapter.currentList[position - 1].paid != 1) {
                 Toast.makeText(
                     requireContext(),
                     "Avval oldingi oylar to'lanishi kerak",
@@ -109,7 +109,7 @@ class PayMonthView : Fragment(R.layout.screen_pay_month) {
         }
         btCheckDialog.show(childFragmentManager, "Assalom")
         btCheckDialog.setOnClickCheck { payed ->
-            val payedOld = payMonthData.payed
+            val payedOld = payMonthData.paid
             if (payedOld == payed) {
                 btCheckDialog.dismiss()
                 return@setOnClickCheck
@@ -121,7 +121,7 @@ class PayMonthView : Fragment(R.layout.screen_pay_month) {
             val deadline = convertStringToDateMillis(payMonthData.deadLine, dataFormat)
             val list = adapter.currentList.toMutableList()
             viewModel.updateProduct(productId, payed, payMonthData.summa)
-            list.find { it.deadLine == payMonthData.deadLine }?.payed =
+            list.find { it.deadLine == payMonthData.deadLine }?.paid =
                 if (payed == 1) 1 else if (deadline < currentDate) -1 else 0
             adapter.submitList(list)
             btCheckDialog.dismiss()

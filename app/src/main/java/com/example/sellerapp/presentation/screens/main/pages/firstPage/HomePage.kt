@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -33,6 +34,7 @@ class HomePage : Fragment(R.layout.page_first) {
         adapter.submitList(viewModel.getAllClients())
 
         viewModel.transferData.observe(viewLifecycleOwner) {
+            binding.placeholder.isGone = it.isNotEmpty()
             adapter.submitList(it)
         }
         adapter.setSelectedItemListener {
@@ -49,19 +51,18 @@ class HomePage : Fragment(R.layout.page_first) {
     }
 
     private fun showBottomSheetDialog(user: UserData) {
-        dialog.setContentView(R.layout.dialog_edit_user)
-        dialog.findViewById<View>(R.id.btn_unpaid).setOnClickListener {
+        dialog.setContentView(R.layout.dialog_choose_edit_delete)
+        dialog.findViewById<View>(R.id.btn_delete).setOnClickListener {
             viewModel.deleteUser(user)
             dialog.dismiss()
         }
 
-        dialog.findViewById<View>(R.id.btn_paid).setOnClickListener {
+        dialog.findViewById<View>(R.id.btn_edit).setOnClickListener {
             val bundle = Bundle()
             bundle.putLong("userId", user.id)
             navController.navigate(R.id.editClientScreen, bundle)
             dialog.dismiss()
         }
-
         dialog.show()
         dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog.window?.setLayout(

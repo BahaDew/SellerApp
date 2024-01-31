@@ -1,4 +1,4 @@
-package com.example.sellerapp.presentation.screens.editUser
+package com.example.sellerapp.presentation.screens.edit_user
 
 import com.example.sellerapp.data.model.UserData
 import com.example.sellerapp.domain.AppRepositoryImpl

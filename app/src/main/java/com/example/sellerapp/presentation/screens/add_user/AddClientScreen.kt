@@ -1,4 +1,4 @@
-package com.example.sellerapp.presentation.screens.addUser
+package com.example.sellerapp.presentation.screens.add_user
 
 import android.os.Bundle
 import android.view.View
@@ -37,7 +37,7 @@ class AddClientScreen : Fragment(R.layout.screen_add_client) {
                 productName = binding.productName.text.toString(),
                 id = 0L,
                 priceProduct = binding.productPrice.text.toString().toDouble(),
-                advance_payment = binding.advancePayment.text.toString().toDouble(),
+                advancePayment = binding.advancePayment.text.toString().toDouble(),
                 monthOfRent =  binding.paymentMonth.text.toString().toInt(),
                 comment = binding.comment.text.toString(),
                 checkPay = 0.0,

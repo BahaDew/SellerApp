@@ -1,4 +1,4 @@
-package com.example.sellerapp.presentation.screens.addUser
+package com.example.sellerapp.presentation.screens.add_user
 
 import com.example.sellerapp.data.model.ProductData
 import com.example.sellerapp.data.model.UserData

@@ -2,14 +2,12 @@ package com.example.sellerapp.presentation.screens.main.pages.secondPage
 
 import android.annotation.SuppressLint
 import android.app.AlertDialog
-import android.content.Intent
-import android.net.Uri
-import android.os.Build
 import android.os.Bundle
 import android.telephony.SmsManager
 import android.util.Log
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -36,6 +34,8 @@ class PayTodayClients : Fragment(R.layout.page_second) {
     private val viewModel = PayTodayCViewModel()
     private val adapter = TodayPaysAdapter()
     private var observer: Observer<String> = Observer { openSetSMSDialog(it) }
+    private var timeEditComment: Long? = null
+    private var timeSendSms: Long? = null
 
     @SuppressLint("FragmentLiveDataObserve")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -53,10 +53,29 @@ class PayTodayClients : Fragment(R.layout.page_second) {
             findNavController().navigate(R.id.clientInfo, bundle)
         }
         binding.btnSms.setOnClickListener {
-            viewModel.onClickSms()
+            if (timeSendSms == null) {
+                viewModel.onClickSms()
+                timeSendSms = System.currentTimeMillis()
+                Log.d("TTT", "Birinchi bosilishi")
+            } else if(System.currentTimeMillis() - timeSendSms!! > 1000) {
+                Log.d("TTT", "1 sekundan keyin bosti")
+                viewModel.onClickSms()
+                timeSendSms = System.currentTimeMillis()
+            } else {
+                Log.d("TTT", "Bosolmadi")
+            }
         }
         adapter.setOnclickEdit {
-            openEditComment(it)
+            if (timeEditComment == null) {
+                openEditComment(it)
+                timeEditComment = System.currentTimeMillis()
+                Log.d("TTT", "Birinchi bosilishi")
+            } else if(System.currentTimeMillis() - timeEditComment!! > 1000) {
+                Log.d("TTT", "1 sekundan keyin bosti")
+                openEditComment(it)
+                timeEditComment = System.currentTimeMillis()
+            } else
+                Log.d("TTT", "Bosolmadi")
         }
         viewModel.oldSmsLD.observe(this, observer)
     }
@@ -115,7 +134,7 @@ class PayTodayClients : Fragment(R.layout.page_second) {
                 var startDate = getData(product.startDate)
                 val monthOfRent = product.monthOfRent
                 var checkPay = product.checkPay
-                val summa = (product.priceProduct - product.advance_payment) / monthOfRent
+                val summa = (product.priceProduct - product.advancePayment) / monthOfRent
                 for (i in 1..monthOfRent) {
                     if (checkPay.roundToLong() < summa.roundToLong() && convertDateMillisecond(
                             startDate
@@ -141,6 +160,8 @@ class PayTodayClients : Fragment(R.layout.page_second) {
                 }
             }
         }
+        binding.placeholder.isGone = list.isNotEmpty()
+        binding.btnSms.isGone = list.isEmpty()
         adapter.submitList(list)
     }
 

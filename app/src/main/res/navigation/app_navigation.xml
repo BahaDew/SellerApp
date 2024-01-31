@@ -45,7 +45,7 @@
     <fragment
         android:id="@+id/addClientScreen"
         tools:layout="@layout/screen_add_client"
-        android:name="com.example.sellerapp.presentation.screens.addUser.AddClientScreen"
+        android:name="com.example.sellerapp.presentation.screens.add_user.AddClientScreen"
         android:label="AddClientScreen" >
         <action
             android:id="@+id/action_addClientScreen_to_homePage"
@@ -53,9 +53,9 @@
     </fragment>
     <fragment
         android:id="@+id/clientInfo"
-        android:name="com.example.sellerapp.presentation.screens.userInfo.ClientInfo"
+        android:name="com.example.sellerapp.presentation.screens.client_Info.ClientInfo"
         android:label="ClientInfo"
-        tools:layout="@layout/screen_info">
+        tools:layout="@layout/screen_info_client">
         <action
             android:id="@+id/action_clientInfo_to_homePage"
             app:destination="@id/homePage" />
@@ -65,6 +65,9 @@
         <action
             android:id="@+id/action_clientInfo_to_payMonthView"
             app:destination="@id/payMonthView" />
+        <action
+            android:id="@+id/action_clientInfo_to_editProductView"
+            app:destination="@id/editProductView" />
     </fragment>
     <fragment
         android:id="@+id/addProductView"
@@ -86,11 +89,20 @@
     </fragment>
     <fragment
         android:id="@+id/editClientScreen"
-        android:name="com.example.sellerapp.presentation.screens.editUser.EditClientScreen"
+        android:name="com.example.sellerapp.presentation.screens.edit_user.EditClientScreen"
         android:label="EditClientScreen"
         tools:layout="@layout/screen_edit_client">
         <action
             android:id="@+id/action_editClientScreen_to_homePage"
             app:destination="@id/homePage" />
+    </fragment>
+    <fragment
+        android:id="@+id/editProductView"
+        android:name="com.example.sellerapp.presentation.screens.edit_product.EditProductView"
+        android:label="EditProductView"
+        tools:layout="@layout/screen_edit_product">
+        <action
+            android:id="@+id/action_editProductView_to_clientInfo"
+            app:destination="@id/clientInfo" />
     </fragment>
 </navigation>

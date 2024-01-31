@@ -1,4 +1,4 @@
-package com.example.sellerapp.presentation.screens.editUser
+package com.example.sellerapp.presentation.screens.edit_user
 
 import android.annotation.SuppressLint
 import android.os.Bundle

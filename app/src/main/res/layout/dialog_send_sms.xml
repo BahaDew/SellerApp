@@ -27,7 +27,7 @@
         android:layout_marginVertical="20dp"
         app:boxStrokeColor="@color/color_app_main"
         app:endIconCheckable="true"
-        app:endIconDrawable="@drawable/send_alt_2_svgrepo_com"
+        app:endIconDrawable="@drawable/ic_send_alt_2_svgrepo_com"
         app:endIconMode="custom"
         app:endIconTint="@color/color_app_main"
         app:layout_constraintBottom_toBottomOf="parent"
