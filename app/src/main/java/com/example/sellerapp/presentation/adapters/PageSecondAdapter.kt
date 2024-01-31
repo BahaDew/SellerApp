@@ -33,7 +33,8 @@ class PageSecondAdapter : ListAdapter<ProductData, PageSecondAdapter.MyHolder>(T
         fun bind(){
             val pos = getItem(absoluteAdapterPosition)
            // binding.amountPayable.text = pos.monthPrice.toString()
-            binding.productName.text = pos.productName
+            binding.productName2.text = pos.productName
+            /*binding.*/
 
         }
     }
